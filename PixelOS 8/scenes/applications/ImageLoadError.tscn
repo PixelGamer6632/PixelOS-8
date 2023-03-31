@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx4dnwkv0xrfx"]
+
+[ext_resource type="Script" path="res://scripts/ImageError.gd" id="1_t8dba"]
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_rhbxm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rd256"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkhxx"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t8dba")
+
+[node name="ImageError" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -119.0
+offset_right = 191.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rd256")
+
+[node name="Toolbar" type="Panel" parent="ImageError"]
+layout_mode = 0
+offset_right = 382.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vkhxx")
+
+[node name="Title" type="Label" parent="ImageError/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_right = 84.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_rhbxm")
+text = "Image Load Error"
+horizontal_alignment = 1
+
+[node name="Dragger" type="Button" parent="ImageError/Toolbar"]
+layout_mode = 0
+offset_right = 382.0
+offset_bottom = 53.0
+focus_mode = 0
+flat = true
+
+[node name="Label" type="Label" parent="ImageError"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 70.0
+offset_right = 369.0
+offset_bottom = 178.0
+theme = ExtResource("2_rhbxm")
+text = "Your saved profile picture or custom wallpaper could not be loaded bcause it may have been moved or deleted. Saved pictures cannot leave the user:// directory."
+autowrap_mode = 3
+
+[node name="OK" type="Button" parent="ImageError"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -49.0
+offset_right = -19.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_rhbxm")
+text = "OK"
+
+[node name="OpenUser" type="Button" parent="ImageError"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -49.0
+offset_right = 129.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_rhbxm")
+text = "Open user://"
+
+[connection signal="pressed" from="ImageError/OK" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="ImageError/OpenUser" to="." method="_on_open_user_pressed"]

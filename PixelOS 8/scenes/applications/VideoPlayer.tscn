@@ -1,0 +1,209 @@
+[gd_scene load_steps=12 format=3 uid="uid://db0lcawsbaorr"]
+
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_6h8ok"]
+[ext_resource type="Script" path="res://scripts/VideoPlayer.gd" id="1_n4nf3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umifm"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcj35"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sc44p"]
+bg_color = Color(0.6, 0.0313726, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jm2uf"]
+bg_color = Color(0.52549, 0.00392157, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5okn"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7ahf"]
+bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpa3w"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql7ny"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vln17"]
+bg_color = Color(0.627451, 0.729412, 1, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n4nf3")
+
+[node name="VideoPlayer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -735.5
+offset_top = -502.5
+offset_right = 735.5
+offset_bottom = 502.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_umifm")
+
+[node name="Toolbar" type="Panel" parent="VideoPlayer"]
+layout_mode = 0
+offset_right = 1471.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcj35")
+
+[node name="Title" type="Label" parent="VideoPlayer/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_right = 84.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6h8ok")
+text = "Video Player"
+horizontal_alignment = 1
+
+[node name="Dragger" type="Button" parent="VideoPlayer/Toolbar"]
+layout_mode = 0
+offset_right = 1361.0
+offset_bottom = 53.0
+focus_mode = 0
+flat = true
+
+[node name="Video_X" type="Button" parent="VideoPlayer/Toolbar"]
+layout_mode = 0
+offset_left = 1422.0
+offset_top = 8.0
+offset_right = 1460.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_sc44p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jm2uf")
+text = "X"
+
+[node name="Video_M" type="Button" parent="VideoPlayer/Toolbar"]
+layout_mode = 0
+offset_left = 1372.0
+offset_top = 8.0
+offset_right = 1410.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_x5okn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q7ahf")
+text = "__"
+
+[node name="Video" type="VideoStreamPlayer" parent="VideoPlayer"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 77.0
+offset_right = 1423.0
+offset_bottom = 868.0
+expand = true
+
+[node name="Player" type="Panel" parent="VideoPlayer"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hpa3w")
+
+[node name="ProgressBar" type="ProgressBar" parent="VideoPlayer/Player"]
+visible = false
+layout_mode = 0
+offset_top = -8.0
+offset_right = 1471.0
+offset_bottom = 19.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ql7ny")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vln17")
+show_percentage = false
+
+[node name="ValueIncrease" type="Timer" parent="VideoPlayer/Player/ProgressBar"]
+
+[node name="Play" type="Button" parent="VideoPlayer/Player"]
+layout_mode = 0
+offset_left = 701.0
+offset_top = 22.0
+offset_right = 776.0
+offset_bottom = 89.0
+theme = ExtResource("1_6h8ok")
+text = "Play"
+
+[node name="Pause" type="Button" parent="VideoPlayer/Player"]
+layout_mode = 0
+offset_left = 795.0
+offset_top = 35.0
+offset_right = 889.0
+offset_bottom = 79.0
+theme = ExtResource("1_6h8ok")
+text = "Pause"
+
+[node name="VideoName" type="Label" parent="VideoPlayer/Player"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 36.0
+offset_right = 563.0
+offset_bottom = 71.0
+theme = ExtResource("1_6h8ok")
+theme_override_font_sizes/font_size = 22
+text = "Video Name"
+
+[node name="Replay" type="Button" parent="VideoPlayer/Player"]
+offset_left = 587.0
+offset_top = 35.0
+offset_right = 681.0
+offset_bottom = 79.0
+theme = ExtResource("1_6h8ok")
+text = "Replay"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VideoPlayer/Toolbar/Video_X" to="." method="_on_video_x_pressed"]
+[connection signal="pressed" from="VideoPlayer/Toolbar/Video_M" to="." method="_on_music_m_pressed"]
+[connection signal="timeout" from="VideoPlayer/Player/ProgressBar/ValueIncrease" to="." method="_on_value_increase_timeout"]
+[connection signal="pressed" from="VideoPlayer/Player/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VideoPlayer/Player/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="VideoPlayer/Player/Replay" to="." method="_on_replay_pressed"]

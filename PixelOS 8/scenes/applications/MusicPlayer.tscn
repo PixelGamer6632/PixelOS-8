@@ -1,0 +1,240 @@
+[gd_scene load_steps=13 format=3 uid="uid://cvwoeibjw6o4d"]
+
+[ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="1_81x2m"]
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_uywlq"]
+[ext_resource type="Script" path="res://scripts/Song.gd" id="3_cm1gg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lffgt"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvb3f"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_118op"]
+bg_color = Color(0.6, 0.0313726, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxg17"]
+bg_color = Color(0.52549, 0.00392157, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rbev"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_te72m"]
+bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i87jx"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4w81c"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcsex"]
+bg_color = Color(0.6, 0.443137, 0.694118, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_81x2m")
+
+[node name="MusicPlayer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -539.0
+offset_top = -340.0
+offset_right = 539.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lffgt")
+
+[node name="Toolbar" type="Panel" parent="MusicPlayer"]
+layout_mode = 0
+offset_right = 1078.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pvb3f")
+
+[node name="Title" type="Label" parent="MusicPlayer/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_right = 84.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uywlq")
+text = "Music Player"
+horizontal_alignment = 1
+
+[node name="Dragger" type="Button" parent="MusicPlayer/Toolbar"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 53.0
+focus_mode = 0
+flat = true
+
+[node name="Music_X" type="Button" parent="MusicPlayer/Toolbar"]
+layout_mode = 0
+offset_left = 1031.0
+offset_top = 8.0
+offset_right = 1069.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_118op")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxg17")
+text = "X"
+
+[node name="Music_M" type="Button" parent="MusicPlayer/Toolbar"]
+layout_mode = 0
+offset_left = 981.0
+offset_top = 8.0
+offset_right = 1019.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_2rbev")
+theme_override_styles/hover = SubResource("StyleBoxFlat_te72m")
+text = "__"
+
+[node name="Player" type="Panel" parent="MusicPlayer"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i87jx")
+
+[node name="ProgressBar" type="ProgressBar" parent="MusicPlayer/Player"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 1079.0
+offset_bottom = 19.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4w81c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pcsex")
+show_percentage = false
+
+[node name="ValueIncrease" type="Timer" parent="MusicPlayer/Player/ProgressBar"]
+
+[node name="LengthTime" type="Label" parent="MusicPlayer/Player/ProgressBar"]
+layout_mode = 0
+offset_left = 943.0
+offset_top = 3.0
+offset_right = 1072.0
+offset_bottom = 29.0
+theme = ExtResource("1_uywlq")
+text = "0:00"
+horizontal_alignment = 2
+
+[node name="Play" type="Button" parent="MusicPlayer/Player"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 30.0
+offset_right = 575.0
+offset_bottom = 97.0
+focus_mode = 0
+theme = ExtResource("1_uywlq")
+text = "Play"
+
+[node name="Replay" type="Button" parent="MusicPlayer/Player"]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 43.0
+offset_right = 482.0
+offset_bottom = 87.0
+theme = ExtResource("1_uywlq")
+text = "Replay"
+
+[node name="CoverDisplay" type="Panel" parent="MusicPlayer/Player"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -196.0
+offset_right = 186.0
+offset_bottom = -26.0
+
+[node name="AudioName" type="Label" parent="MusicPlayer/Player"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 44.0
+offset_right = 345.0
+offset_bottom = 79.0
+theme = ExtResource("1_uywlq")
+theme_override_font_sizes/font_size = 22
+text = "Audio Name"
+
+[node name="Pause" type="Button" parent="MusicPlayer/Player"]
+offset_left = 594.0
+offset_top = 43.0
+offset_right = 688.0
+offset_bottom = 87.0
+theme = ExtResource("1_uywlq")
+text = "Pause"
+
+[node name="ScrollMusic" type="ScrollContainer" parent="MusicPlayer"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 67.0
+offset_right = 1055.0
+offset_bottom = 547.0
+
+[node name="MusicList" type="VBoxContainer" parent="MusicPlayer/ScrollMusic"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Song" type="Button" parent="MusicPlayer/ScrollMusic/MusicList"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_uywlq")
+theme_override_font_sizes/font_size = 22
+text = "Music"
+alignment = 0
+script = ExtResource("3_cm1gg")
+
+[connection signal="pressed" from="MusicPlayer/Toolbar/Music_X" to="." method="_on_music_x_pressed"]
+[connection signal="pressed" from="MusicPlayer/Toolbar/Music_M" to="." method="_on_music_m_pressed"]
+[connection signal="timeout" from="MusicPlayer/Player/ProgressBar/ValueIncrease" to="." method="_on_value_increase_timeout"]
+[connection signal="pressed" from="MusicPlayer/Player/Play" to="." method="_on_play_pressed"]
+[connection signal="visibility_changed" from="MusicPlayer/Player/Play" to="." method="_on_play_visibility_changed"]
+[connection signal="pressed" from="MusicPlayer/Player/Replay" to="." method="_on_end_pressed"]
+[connection signal="pressed" from="MusicPlayer/Player/Pause" to="." method="_on_pause_pressed"]

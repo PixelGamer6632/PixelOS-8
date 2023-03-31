@@ -1,0 +1,291 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1ldb8fhqa5l4"]
+
+[ext_resource type="Script" path="res://scripts/OOBE.gd" id="1_8b15s"]
+[ext_resource type="Texture2D" uid="uid://clojwtypry74v" path="res://assets/images/Wallpapers/PixelOS8Default.png" id="1_j7pr0"]
+[ext_resource type="Texture2D" uid="uid://b4oa21tf85etn" path="res://assets/icons/MyPC.svg" id="1_tvg66"]
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_tvg1g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h0qlt"]
+texture = ExtResource("1_j7pr0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35kmr"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8b15s")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_h0qlt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -421.5
+offset_top = -251.0
+offset_right = 421.5
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_35kmr")
+
+[node name="Intro" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="Sprite2D" parent="Panel/Intro"]
+position = Vector2(266.5, 209)
+scale = Vector2(1.48182, 1.44545)
+texture = ExtResource("1_tvg66")
+
+[node name="Label" type="Label" parent="Panel/Intro/Logo"]
+offset_left = 65.0
+offset_top = -26.0
+offset_right = 245.0
+offset_bottom = 32.0
+theme = ExtResource("2_tvg1g")
+theme_override_font_sizes/font_size = 39
+text = "PixelOS 8"
+
+[node name="Begin" type="Button" parent="Panel/Intro"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -115.0
+offset_right = 71.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_tvg1g")
+text = "Begin"
+
+[node name="0" type="Control" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProfName" type="LineEdit" parent="Panel/0"]
+layout_mode = 0
+offset_left = 48.5
+offset_top = 152.0
+offset_right = 426.5
+offset_bottom = 198.0
+theme = ExtResource("2_tvg1g")
+placeholder_text = "Profile Name"
+
+[node name="Password" type="LineEdit" parent="Panel/0"]
+layout_mode = 0
+offset_left = 48.5
+offset_top = 227.0
+offset_right = 426.5
+offset_bottom = 273.0
+theme = ExtResource("2_tvg1g")
+placeholder_text = "Password"
+
+[node name="ChoosePFP" type="Button" parent="Panel/0"]
+layout_mode = 0
+offset_left = 48.5
+offset_top = 305.0
+offset_right = 345.5
+offset_bottom = 347.0
+theme = ExtResource("2_tvg1g")
+text = "Choose Profile Picture"
+
+[node name="PFPPreview" type="Panel" parent="Panel/0"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -78.0
+offset_right = -128.0
+offset_bottom = 78.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ChoosePFPFile" type="FileDialog" parent="Panel/0"]
+title = "Open a File"
+size = Vector2i(1078, 736)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+
+[node name="ValidWarning" type="Label" parent="Panel/0"]
+visible = false
+layout_mode = 0
+offset_left = 49.5
+offset_top = 357.0
+offset_right = 216.5
+offset_bottom = 383.0
+theme = ExtResource("2_tvg1g")
+text = "Must be a valid PNG!"
+
+[node name="Timer" type="Timer" parent="Panel/0/ValidWarning"]
+wait_time = 4.0
+one_shot = true
+
+[node name="1" type="Control" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Day" type="LineEdit" parent="Panel/1"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 94.0
+offset_right = 109.0
+offset_bottom = 131.0
+theme = ExtResource("2_tvg1g")
+placeholder_text = "Day"
+
+[node name="Month" type="LineEdit" parent="Panel/1"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 94.0
+offset_right = 196.0
+offset_bottom = 132.0
+theme = ExtResource("2_tvg1g")
+placeholder_text = "Month"
+
+[node name="Year" type="LineEdit" parent="Panel/1"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 94.0
+offset_right = 353.0
+offset_bottom = 133.0
+theme = ExtResource("2_tvg1g")
+placeholder_text = "Year"
+
+[node name="Location" type="LineEdit" parent="Panel/1"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 166.0
+offset_right = 387.0
+offset_bottom = 207.0
+theme = ExtResource("2_tvg1g")
+placeholder_text = "Location (it can be anything you want)"
+
+[node name="2" type="Control" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PixelLogo" type="Label" parent="Panel/2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -213.0
+offset_top = 119.0
+offset_right = 213.0
+offset_bottom = 177.0
+grow_horizontal = 2
+theme = ExtResource("2_tvg1g")
+theme_override_font_sizes/font_size = 39
+text = "Welcome to PixelOS 8"
+
+[node name="Label" type="Label" parent="Panel/2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -13.0
+offset_right = 117.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_tvg1g")
+text = "Click Next to finish the setup."
+
+[node name="Next" type="Button" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -84.0
+offset_right = -54.0
+offset_bottom = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_tvg1g")
+disabled = true
+text = "Next"
+
+[node name="PixelLogo" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -83.0
+offset_right = 120.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_tvg1g")
+theme_override_font_sizes/font_size = 39
+text = "pixel games"
+
+[connection signal="pressed" from="Panel/Intro/Begin" to="." method="_on_begin_pressed"]
+[connection signal="text_submitted" from="Panel/0/ProfName" to="." method="_on_prof_name_text_submitted"]
+[connection signal="text_submitted" from="Panel/0/Password" to="." method="_on_password_text_submitted"]
+[connection signal="pressed" from="Panel/0/ChoosePFP" to="." method="_on_choose_pfp_pressed"]
+[connection signal="file_selected" from="Panel/0/ChoosePFPFile" to="." method="_on_choose_pfp_file_file_selected"]
+[connection signal="visibility_changed" from="Panel/0/ValidWarning" to="." method="_on_valid_warning_visibility_changed"]
+[connection signal="timeout" from="Panel/0/ValidWarning/Timer" to="." method="_on_timer_timeout"]
+[connection signal="text_submitted" from="Panel/1/Day" to="." method="_on_day_text_submitted"]
+[connection signal="text_submitted" from="Panel/1/Month" to="." method="_on_month_text_submitted"]
+[connection signal="text_submitted" from="Panel/1/Year" to="." method="_on_year_text_submitted"]
+[connection signal="text_submitted" from="Panel/1/Location" to="." method="_on_location_text_submitted"]
+[connection signal="pressed" from="Panel/Next" to="." method="_on_next_pressed"]

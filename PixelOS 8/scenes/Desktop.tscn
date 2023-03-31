@@ -1,0 +1,465 @@
+[gd_scene load_steps=27 format=3 uid="uid://vw6yuw24l65y"]
+
+[ext_resource type="Script" path="res://scripts/MainControl.gd" id="1_7cvne"]
+[ext_resource type="Texture2D" uid="uid://b4oa21tf85etn" path="res://assets/icons/MyPC.svg" id="2_1l4jf"]
+[ext_resource type="Script" path="res://scripts/DockApp.gd" id="3_j7lxu"]
+[ext_resource type="PackedScene" uid="uid://bw3sl21veke8e" path="res://scenes/applications/Settings.tscn" id="6_yaulf"]
+[ext_resource type="PackedScene" uid="uid://dsyrwd8x53kjw" path="res://scenes/Launcher.tscn" id="7_gaejj"]
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="8_edexd"]
+[ext_resource type="PackedScene" uid="uid://buo1qu0utsr4l" path="res://scenes/applications/Writer.tscn" id="9_0gmli"]
+[ext_resource type="PackedScene" uid="uid://cqhdd3kgdbj01" path="res://scenes/applications/Terminal.tscn" id="9_dxdwr"]
+[ext_resource type="PackedScene" uid="uid://cvwoeibjw6o4d" path="res://scenes/applications/MusicPlayer.tscn" id="10_dsio7"]
+[ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="11_i7k4n"]
+[ext_resource type="PackedScene" uid="uid://ccxlme13buf0" path="res://scenes/applications/ImageView.tscn" id="12_0xk6o"]
+[ext_resource type="PackedScene" uid="uid://c2g1xkgng1g7h" path="res://scenes/applications/MyPC.tscn" id="12_p2cjl"]
+[ext_resource type="PackedScene" uid="uid://d2hiaspa3oe40" path="res://scenes/applications/Browser.tscn" id="12_pc076"]
+[ext_resource type="PackedScene" uid="uid://db0lcawsbaorr" path="res://scenes/applications/VideoPlayer.tscn" id="13_bgcoy"]
+[ext_resource type="PackedScene" uid="uid://b0kqusfjuai0j" path="res://scenes/applications/Calculator.tscn" id="13_nkgtv"]
+[ext_resource type="PackedScene" uid="uid://bx4dnwkv0xrfx" path="res://scenes/applications/ImageLoadError.tscn" id="14_lt8u3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oek6m"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_ic022"]
+base_font = ExtResource("11_i7k4n")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtsam"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43nva"]
+bg_color = Color(0.6, 0.443137, 0.694118, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smfwh"]
+bg_color = Color(0.760784, 0.839216, 0.733333, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_na0w0"]
+bg_color = Color(0.494118, 0.494118, 0.494118, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhxg1"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 0.709804)
+corner_radius_top_left = 37
+corner_radius_top_right = 37
+corner_radius_bottom_right = 37
+corner_radius_bottom_left = 37
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sha7"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontVariation" id="FontVariation_e7d7q"]
+base_font = ExtResource("11_i7k4n")
+
+[sub_resource type="FontVariation" id="FontVariation_yqrwv"]
+base_font = ExtResource("11_i7k4n")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7cvne")
+
+[node name="Wallpaper" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Toolbar" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oek6m")
+
+[node name="OpenLauncher" type="Button" parent="Toolbar"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 105.0
+offset_bottom = 39.0
+theme_override_fonts/font = SubResource("FontVariation_ic022")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xtsam")
+theme_override_styles/hover = SubResource("StyleBoxFlat_43nva")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_smfwh")
+text = "Launcher"
+
+[node name="MenuOpen" type="Button" parent="Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -16.0
+offset_right = 76.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_ic022")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xtsam")
+theme_override_styles/hover = SubResource("StyleBoxFlat_na0w0")
+text = "mm-dd-yyyy"
+
+[node name="TimeLength" type="Timer" parent="Toolbar"]
+autostart = true
+
+[node name="Time" type="Label" parent="Toolbar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -139.0
+offset_top = 11.0
+offset_right = -18.0
+offset_bottom = 38.0
+grow_horizontal = 0
+theme = ExtResource("8_edexd")
+theme_override_font_sizes/font_size = 17
+text = "12:00"
+horizontal_alignment = 2
+
+[node name="MyPC" parent="." instance=ExtResource("12_p2cjl")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Settings" parent="." instance=ExtResource("6_yaulf")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.526
+anchor_top = 0.538
+anchor_right = 0.526
+anchor_bottom = 0.538
+offset_left = -481.08
+offset_top = -324.36
+offset_right = 481.92
+offset_bottom = 324.64
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Writer" parent="." instance=ExtResource("9_0gmli")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -3.05176e-05
+offset_bottom = 3.05176e-05
+
+[node name="Terminal" parent="." instance=ExtResource("9_dxdwr")]
+visible = false
+layout_mode = 1
+
+[node name="Browser" parent="." instance=ExtResource("12_pc076")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Calculator" parent="." instance=ExtResource("13_nkgtv")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.52588e-05
+offset_right = 1.52588e-05
+
+[node name="MusicPlayer" parent="." instance=ExtResource("10_dsio7")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="ImageView" parent="." instance=ExtResource("12_0xk6o")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -360.0
+offset_right = 540.0
+offset_bottom = 360.0
+
+[node name="VideoPlayer" parent="." instance=ExtResource("13_bgcoy")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Dock" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -613.0
+offset_top = 2.0
+offset_right = 613.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fhxg1")
+
+[node name="Icons" type="HBoxContainer" parent="Dock"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 818.0
+offset_bottom = 117.0
+
+[node name="myPC" type="Button" parent="Dock/Icons"]
+layout_mode = 2
+icon = ExtResource("2_1l4jf")
+flat = true
+script = ExtResource("3_j7lxu")
+
+[node name="Menu" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -294.0
+offset_top = 58.0
+offset_right = 294.0
+offset_bottom = 618.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4sha7")
+
+[node name="Power" type="OptionButton" parent="Menu"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 507.0
+offset_right = 140.0
+offset_bottom = 549.0
+theme = ExtResource("8_edexd")
+alignment = 1
+item_count = 3
+popup/item_0/text = "Sleep"
+popup/item_0/id = 0
+popup/item_1/text = "Shut Down"
+popup/item_1/id = 1
+popup/item_2/text = "Restart"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 11.0
+offset_right = 129.0
+offset_bottom = 37.0
+text = "0 Notifications"
+
+[node name="Name2" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 504.0
+offset_right = 497.0
+offset_bottom = 538.0
+theme_override_fonts/font = SubResource("FontVariation_e7d7q")
+theme_override_font_sizes/font_size = 21
+text = "User Name"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 44.0
+offset_right = 246.0
+offset_bottom = 438.0
+
+[node name="Calender" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 61.0
+offset_right = 564.0
+offset_bottom = 369.0
+
+[node name="0" type="HBoxContainer" parent="Menu/Calender"]
+layout_mode = 2
+
+[node name="0" type="Button" parent="Menu/Calender/0"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("8_edexd")
+theme_override_font_sizes/font_size = 21
+text = "1"
+
+[node name="1" type="HBoxContainer" parent="Menu/Calender"]
+layout_mode = 2
+
+[node name="2" type="HBoxContainer" parent="Menu/Calender"]
+layout_mode = 2
+
+[node name="3" type="HBoxContainer" parent="Menu/Calender"]
+layout_mode = 2
+
+[node name="4" type="HBoxContainer" parent="Menu/Calender"]
+layout_mode = 2
+
+[node name="5" type="HBoxContainer" parent="Menu/Calender"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 7.0
+offset_right = 543.0
+offset_bottom = 54.0
+theme_override_fonts/font = SubResource("FontVariation_yqrwv")
+theme_override_font_sizes/font_size = 31
+text = "January"
+horizontal_alignment = 1
+
+[node name="PFP" type="Panel" parent="Menu"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 488.0
+offset_right = 578.0
+offset_bottom = 550.0
+
+[node name="Launcher" parent="." instance=ExtResource("7_gaejj")]
+visible = false
+layout_mode = 1
+
+[node name="CloseLauncher" type="Button" parent="."]
+visible = false
+layout_mode = 1
+offset_right = 176.0
+offset_bottom = 45.0
+theme = ExtResource("8_edexd")
+text = "Close"
+
+[node name="Login" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -121.0
+offset_right = 208.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PFP" type="Panel" parent="Login"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 25.0
+offset_right = 56.0
+offset_bottom = 137.0
+grow_horizontal = 2
+
+[node name="Username" type="Label" parent="Login"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = 22.0
+offset_right = 120.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "User"
+horizontal_alignment = 1
+
+[node name="Password" type="LineEdit" parent="Login"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = 53.5
+offset_right = 148.0
+offset_bottom = 88.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_edexd")
+placeholder_text = "Enter Password"
+
+[node name="ImageError" parent="." instance=ExtResource("14_lt8u3")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="TimeToLoadDock" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(537, 327)
+
+[connection signal="pressed" from="Toolbar/OpenLauncher" to="." method="_on_open_launcher_pressed"]
+[connection signal="pressed" from="Toolbar/MenuOpen" to="." method="_on_menu_open_pressed"]
+[connection signal="timeout" from="Toolbar/TimeLength" to="." method="_on_time_length_timeout"]
+[connection signal="item_selected" from="Menu/Power" to="." method="_on_power_item_selected"]
+[connection signal="pressed" from="CloseLauncher" to="." method="_on_close_launcher_pressed"]
+[connection signal="text_submitted" from="Login/Password" to="." method="_on_password_text_submitted"]
+[connection signal="timeout" from="TimeToLoadDock" to="." method="_on_time_to_load_dock_timeout"]

@@ -1,0 +1,180 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0kqusfjuai0j"]
+
+[ext_resource type="Script" path="res://scripts/Calculator.gd" id="1_5inug"]
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_mj144"]
+[ext_resource type="Script" path="res://scripts/CalcButton.gd" id="3_k73yq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eps2u"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hstdy"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euywn"]
+bg_color = Color(0.6, 0.0313726, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_111uy"]
+bg_color = Color(0.52549, 0.00392157, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61rkn"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgit3"]
+bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5inug")
+
+[node name="Calculator" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -200.0
+offset_right = 191.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eps2u")
+
+[node name="Toolbar" type="Panel" parent="Calculator"]
+layout_mode = 0
+offset_right = 382.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hstdy")
+
+[node name="Calculator_X" type="Button" parent="Calculator/Toolbar"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 9.0
+offset_right = 372.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_euywn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_111uy")
+text = "X"
+
+[node name="Title" type="Label" parent="Calculator/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_right = 84.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_mj144")
+text = "Calculator"
+horizontal_alignment = 1
+
+[node name="Dragger" type="Button" parent="Calculator/Toolbar"]
+layout_mode = 0
+offset_right = 325.0
+offset_bottom = 53.0
+focus_mode = 0
+flat = true
+
+[node name="Calculator_M" type="Button" parent="Calculator/Toolbar"]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 9.0
+offset_right = 322.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_61rkn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lgit3")
+text = "__"
+
+[node name="3" type="HBoxContainer" parent="Calculator"]
+layout_mode = 0
+offset_left = 21.5
+offset_top = 326.5
+offset_right = 357.5
+offset_bottom = 378.5
+
+[node name="2" type="HBoxContainer" parent="Calculator"]
+layout_mode = 0
+offset_left = 21.5
+offset_top = 273.5
+offset_right = 357.5
+offset_bottom = 325.5
+
+[node name="1" type="HBoxContainer" parent="Calculator"]
+layout_mode = 0
+offset_left = 21.5
+offset_top = 222.5
+offset_right = 357.5
+offset_bottom = 274.5
+
+[node name="0" type="HBoxContainer" parent="Calculator"]
+layout_mode = 0
+offset_left = 21.5
+offset_top = 169.5
+offset_right = 357.5
+offset_bottom = 221.5
+
+[node name="0" type="Button" parent="Calculator/0"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_mj144")
+text = "0"
+script = ExtResource("3_k73yq")
+
+[node name="NumDisplay" type="Panel" parent="Calculator"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 79.0
+offset_right = 358.0
+offset_bottom = 144.0
+
+[node name="Label" type="Label" parent="Calculator/NumDisplay"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 328.0
+offset_bottom = 57.0
+theme = ExtResource("2_mj144")
+theme_override_font_sizes/font_size = 35
+text = "0"
+horizontal_alignment = 2
+clip_text = true
+
+[connection signal="pressed" from="Calculator/Toolbar/Calculator_X" to="." method="_on_calculator_x_pressed"]
+[connection signal="pressed" from="Calculator/Toolbar/Calculator_M" to="." method="_on_calculator_m_pressed"]

@@ -1,0 +1,519 @@
+[gd_scene load_steps=15 format=3 uid="uid://bw3sl21veke8e"]
+
+[ext_resource type="Script" path="res://scripts/SettingsControl.gd" id="1_1tgg3"]
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_vnhs5"]
+[ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="3_c5a43"]
+[ext_resource type="Script" path="res://scripts/Sections.gd" id="4_y588d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7qhn"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyfob"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub62i"]
+bg_color = Color(0.6, 0.0313726, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h371r"]
+bg_color = Color(0.52549, 0.00392157, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvmpj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbj3y"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojmsy"]
+bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="FontVariation" id="FontVariation_e4xir"]
+base_font = ExtResource("3_c5a43")
+
+[sub_resource type="FontVariation" id="FontVariation_16657"]
+base_font = ExtResource("3_c5a43")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2pmy"]
+bg_color = Color(0.52549, 0.00392157, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1tgg3")
+
+[node name="Settings" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -479.5
+offset_top = -317.5
+offset_right = 479.5
+offset_bottom = 317.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k7qhn")
+
+[node name="Toolbar" type="Panel" parent="Settings"]
+layout_mode = 0
+offset_right = 959.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eyfob")
+
+[node name="MyPC_X" type="Button" parent="Settings/Toolbar"]
+layout_mode = 0
+offset_left = 913.0
+offset_top = 9.0
+offset_right = 951.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ub62i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h371r")
+text = "X"
+
+[node name="Title" type="Label" parent="Settings/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_right = 84.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vnhs5")
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="clicker" type="Button" parent="Settings/Toolbar"]
+layout_mode = 0
+offset_right = 899.0
+offset_bottom = 56.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_dvmpj")
+shortcut_feedback = false
+flat = true
+
+[node name="Music_X2" type="Button" parent="Settings/Toolbar"]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 9.0
+offset_right = 903.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kbj3y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojmsy")
+text = "__"
+
+[node name="Username" type="Label" parent="Settings"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 73.0
+offset_right = 335.0
+offset_bottom = 114.0
+theme_override_fonts/font = SubResource("FontVariation_e4xir")
+theme_override_font_sizes/font_size = 26
+text = "Username"
+
+[node name="Categories" type="VBoxContainer" parent="Settings"]
+layout_mode = 0
+offset_left = 16.5
+offset_top = 127.5
+offset_right = 311.5
+offset_bottom = 612.5
+
+[node name="Section" type="Button" parent="Settings/Categories"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_vnhs5")
+theme_override_fonts/font = SubResource("FontVariation_16657")
+theme_override_font_sizes/font_size = 25
+text = "Section"
+script = ExtResource("4_y588d")
+
+[node name="System" type="Control" parent="Settings"]
+anchors_preset = 0
+offset_left = 335.5
+offset_top = 76.5
+offset_right = 937.5
+offset_bottom = 611.5
+
+[node name="ChangeName" type="Button" parent="Settings/System"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 241.0
+offset_bottom = 38.0
+theme = ExtResource("1_vnhs5")
+text = "Change Profile Name"
+
+[node name="ChangePass" type="Button" parent="Settings/System"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 50.0
+offset_right = 241.0
+offset_bottom = 88.0
+theme = ExtResource("1_vnhs5")
+text = "Change Password"
+
+[node name="ChangeDate" type="Button" parent="Settings/System"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 101.0
+offset_right = 241.0
+offset_bottom = 139.0
+theme = ExtResource("1_vnhs5")
+text = "Change Date & Time"
+
+[node name="KernelName" type="LineEdit" parent="Settings/System"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 161.0
+offset_right = 298.0
+offset_bottom = 208.0
+theme = ExtResource("1_vnhs5")
+placeholder_text = "Kernel Name"
+
+[node name="ModelName" type="LineEdit" parent="Settings/System"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 228.0
+offset_right = 298.0
+offset_bottom = 275.0
+theme = ExtResource("1_vnhs5")
+placeholder_text = "Computer Model Name"
+
+[node name="Manufacturer" type="LineEdit" parent="Settings/System"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 294.0
+offset_right = 298.0
+offset_bottom = 341.0
+theme = ExtResource("1_vnhs5")
+placeholder_text = "Manufacturer"
+
+[node name="RAM" type="LineEdit" parent="Settings/System"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 360.0
+offset_right = 298.0
+offset_bottom = 407.0
+theme = ExtResource("1_vnhs5")
+placeholder_text = "RAM"
+
+[node name="Personalize" type="Control" parent="Settings"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 335.5
+offset_top = 76.5
+offset_right = 937.5
+offset_bottom = 611.5
+
+[node name="WallpaperSelect" type="OptionButton" parent="Settings/Personalize"]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 37.0
+theme = ExtResource("1_vnhs5")
+alignment = 1
+
+[node name="ChangePFP" type="Button" parent="Settings/Personalize"]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 227.0
+offset_bottom = 100.0
+theme = ExtResource("1_vnhs5")
+text = "Change Profile Picture"
+
+[node name="ChoosePFP" type="FileDialog" parent="Settings/Personalize"]
+title = "Open a File"
+position = Vector2i(24, 27)
+size = Vector2i(1032, 697)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+
+[node name="ChooseWallpaper" type="FileDialog" parent="Settings/Personalize"]
+title = "Open a File"
+position = Vector2i(24, 27)
+size = Vector2i(1032, 697)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+
+[node name="ChooseCustomWallpaper" type="Button" parent="Settings/Personalize"]
+layout_mode = 0
+offset_left = 204.0
+offset_right = 444.0
+offset_bottom = 38.0
+theme = ExtResource("1_vnhs5")
+text = "Choose Custom Wallpaper"
+
+[node name="ChangeLocation" type="LineEdit" parent="Settings/Personalize"]
+layout_mode = 0
+offset_top = 176.0
+offset_right = 441.0
+offset_bottom = 217.0
+theme = ExtResource("1_vnhs5")
+placeholder_text = "Change Location"
+
+[node name="ChangeLogo" type="Button" parent="Settings/Personalize"]
+layout_mode = 0
+offset_top = 119.0
+offset_right = 227.0
+offset_bottom = 157.0
+theme = ExtResource("1_vnhs5")
+text = "Change OS Logo"
+
+[node name="FileDialog" type="FileDialog" parent="Settings/Personalize"]
+title = "Open a File"
+size = Vector2i(1100, 794)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+
+[node name="WorldBuilding" type="Control" parent="Settings"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 335.5
+offset_top = 76.5
+offset_right = 937.5
+offset_bottom = 611.5
+
+[node name="PowerSource" type="LineEdit" parent="Settings/WorldBuilding"]
+layout_mode = 0
+offset_right = 428.0
+offset_bottom = 47.0
+theme = ExtResource("1_vnhs5")
+placeholder_text = "Computer Power Source"
+
+[node name="Currency" type="LineEdit" parent="Settings/WorldBuilding"]
+layout_mode = 0
+offset_top = 63.0
+offset_right = 146.0
+offset_bottom = 110.0
+theme = ExtResource("1_vnhs5")
+placeholder_text = "Currency Symbol"
+
+[node name="InternetActive" type="CheckBox" parent="Settings/WorldBuilding"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 195.0
+offset_right = 544.0
+offset_bottom = 226.0
+button_pressed = true
+text = "Internet (If unchecked, Pixel Browser functionality will be disabled.)"
+
+[node name="OSName" type="LineEdit" parent="Settings/WorldBuilding"]
+layout_mode = 0
+offset_top = 130.0
+offset_right = 261.0
+offset_bottom = 177.0
+theme = ExtResource("1_vnhs5")
+placeholder_text = "Operating System Name"
+
+[node name="About" type="Control" parent="Settings"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 335.5
+offset_top = 76.5
+offset_right = 937.5
+offset_bottom = 611.5
+
+[node name="Logo" type="Panel" parent="Settings/About"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 13.0
+offset_right = 126.0
+offset_bottom = 117.0
+
+[node name="Label" type="Label" parent="Settings/About/Logo"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 27.0
+offset_right = 293.0
+offset_bottom = 80.0
+theme = ExtResource("1_vnhs5")
+theme_override_font_sizes/font_size = 35
+text = "PixelOS 8"
+
+[node name="PrivacySettings" type="Button" parent="Settings/About"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -53.0
+offset_right = 207.0
+offset_bottom = -12.0
+grow_vertical = 0
+theme = ExtResource("1_vnhs5")
+text = "Privacy Settings"
+
+[node name="Timer" type="Timer" parent="Settings/About/PrivacySettings"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Label" type="Label" parent="Settings/About"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 131.0
+offset_right = 137.0
+offset_bottom = 166.0
+theme = ExtResource("1_vnhs5")
+theme_override_font_sizes/font_size = 22
+text = "Version: 1.0"
+
+[node name="Apply" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.5
+offset_top = -94.0
+offset_right = 24.5
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_vnhs5")
+text = "Apply Changes"
+
+[node name="ApplyWarning" type="Label" parent="Settings"]
+layout_mode = 0
+offset_left = 343.5
+offset_top = 597.5
+offset_right = 845.5
+offset_bottom = 623.5
+theme = ExtResource("1_vnhs5")
+text = "Note, if a setting is blank when applied, it will be set to blank."
+
+[node name="ChangePassName" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.5
+offset_top = -94.5
+offset_right = 197.5
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k7qhn")
+
+[node name="Toolbar" type="Panel" parent="ChangePassName"]
+layout_mode = 0
+offset_right = 395.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eyfob")
+
+[node name="Change_X" type="Button" parent="ChangePassName/Toolbar"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 9.0
+offset_right = 387.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ub62i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e2pmy")
+text = "X"
+
+[node name="Title" type="Label" parent="ChangePassName/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_right = 84.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vnhs5")
+text = "Change Profile Name"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="ChangePassName"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 69.0
+offset_right = 380.0
+offset_bottom = 107.0
+theme = ExtResource("1_vnhs5")
+placeholder_text = "Enter New Name"
+
+[node name="Confirm" type="Button" parent="ChangePassName"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -63.0
+offset_right = 70.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_vnhs5")
+text = "Confirm"
+
+[connection signal="pressed" from="Settings/Toolbar/MyPC_X" to="." method="_on_my_pc_x_pressed"]
+[connection signal="pressed" from="Settings/Toolbar/clicker" to="." method="_on_clicker_pressed"]
+[connection signal="pressed" from="Settings/Toolbar/Music_X2" to="." method="_on_music_x_2_pressed"]
+[connection signal="pressed" from="Settings/System/ChangeName" to="." method="_on_change_name_pressed"]
+[connection signal="pressed" from="Settings/System/ChangePass" to="." method="_on_change_pass_pressed"]
+[connection signal="pressed" from="Settings/System/ChangeDate" to="." method="_on_change_pass_pressed"]
+[connection signal="item_selected" from="Settings/Personalize/WallpaperSelect" to="." method="_on_wallpaper_select_item_selected"]
+[connection signal="pressed" from="Settings/Personalize/ChangePFP" to="." method="_on_change_pfp_pressed"]
+[connection signal="file_selected" from="Settings/Personalize/ChoosePFP" to="." method="_on_choose_pfp_file_selected"]
+[connection signal="file_selected" from="Settings/Personalize/ChooseWallpaper" to="." method="_on_choose_wallpaper_file_selected"]
+[connection signal="pressed" from="Settings/Personalize/ChooseCustomWallpaper" to="." method="_on_choose_custom_wallpaper_pressed"]
+[connection signal="text_submitted" from="Settings/Personalize/ChangeLocation" to="." method="_on_change_location_text_submitted"]
+[connection signal="pressed" from="Settings/Personalize/ChangeLogo" to="." method="_on_change_logo_pressed"]
+[connection signal="file_selected" from="Settings/Personalize/FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="text_submitted" from="Settings/WorldBuilding/PowerSource" to="." method="_on_power_source_text_submitted"]
+[connection signal="text_submitted" from="Settings/WorldBuilding/Currency" to="." method="_on_currency_text_submitted"]
+[connection signal="toggled" from="Settings/WorldBuilding/InternetActive" to="." method="_on_internet_active_toggled"]
+[connection signal="text_submitted" from="Settings/WorldBuilding/OSName" to="." method="_on_os_name_text_submitted"]
+[connection signal="pressed" from="Settings/About/PrivacySettings" to="." method="_on_privacy_settings_pressed"]
+[connection signal="timeout" from="Settings/About/PrivacySettings/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Settings/Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="ChangePassName/Toolbar/Change_X" to="." method="_on_change_x_pressed"]
+[connection signal="pressed" from="ChangePassName/Confirm" to="." method="_on_confirm_pressed"]

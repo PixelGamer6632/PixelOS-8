@@ -1,0 +1,441 @@
+[gd_scene load_steps=14 format=3 uid="uid://c2g1xkgng1g7h"]
+
+[ext_resource type="Script" path="res://scripts/MyPC.gd" id="1_8jr8s"]
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_fs565"]
+[ext_resource type="Script" path="res://scripts/FolderControl.gd" id="3_1t66u"]
+[ext_resource type="Script" path="res://scripts/FileController.gd" id="3_l052j"]
+[ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="4_nsxd2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1brn"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krwga"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtccr"]
+bg_color = Color(0.6, 0.0313726, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bog2"]
+bg_color = Color(0.52549, 0.00392157, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuhg7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo28f"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j37n5"]
+bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi1yi"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8jr8s")
+
+[node name="MyPC" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.5
+offset_top = -290.0
+offset_right = 464.5
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o1brn")
+
+[node name="Toolbar" type="Panel" parent="MyPC"]
+layout_mode = 0
+offset_right = 929.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_krwga")
+
+[node name="MyPC_X" type="Button" parent="MyPC/Toolbar"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 9.0
+offset_right = 920.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_mtccr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6bog2")
+text = "X"
+
+[node name="Title" type="Label" parent="MyPC/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_right = 84.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_fs565")
+text = "MyPC"
+horizontal_alignment = 1
+
+[node name="CreateFile" type="Button" parent="MyPC/Toolbar"]
+layout_mode = 0
+offset_left = 9.5
+offset_top = 7.5
+offset_right = 111.5
+offset_bottom = 45.5
+theme = ExtResource("2_fs565")
+text = "Create"
+
+[node name="Dragger" type="Button" parent="MyPC/Toolbar"]
+layout_mode = 0
+offset_left = 125.0
+offset_right = 875.0
+offset_bottom = 55.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_kuhg7")
+flat = true
+
+[node name="MyPC_M" type="Button" parent="MyPC/Toolbar"]
+layout_mode = 0
+offset_left = 833.0
+offset_top = 9.0
+offset_right = 871.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_uo28f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j37n5")
+text = "__"
+
+[node name="Folders" type="VBoxContainer" parent="MyPC"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 75.0
+offset_right = 218.0
+offset_bottom = 551.0
+
+[node name="Folder" type="Button" parent="MyPC/Folders"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_fs565")
+text = "Folder Name"
+script = ExtResource("3_1t66u")
+
+[node name="FileDialog" type="FileDialog" parent="MyPC"]
+title = "Open a File"
+position = Vector2i(88, 60)
+size = Vector2i(893, 630)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+filters = PackedStringArray(".png", ".jpg")
+
+[node name="FileInfo" type="Control" parent="MyPC"]
+anchors_preset = 0
+offset_left = 638.0
+offset_top = 58.0
+offset_right = 927.0
+offset_bottom = 563.0
+
+[node name="FileName" type="Label" parent="MyPC/FileInfo"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 15.0
+offset_right = 265.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("4_nsxd2")
+theme_override_font_sizes/font_size = 20
+text = "File Name"
+horizontal_alignment = 1
+
+[node name="NoPrev" type="Label" parent="MyPC/FileInfo"]
+layout_mode = 0
+offset_left = 67.5
+offset_top = 119.0
+offset_right = 228.5
+offset_bottom = 145.0
+text = "No preview avalable."
+
+[node name="ImagePreview" type="Panel" parent="MyPC/FileInfo"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 60.0
+offset_right = 155.0
+offset_bottom = 178.0
+scale = Vector2(1.90625, 1.29688)
+
+[node name="CharCount" type="Label" parent="MyPC/FileInfo"]
+visible = false
+layout_mode = 0
+offset_left = 22.5
+offset_top = 242.0
+offset_right = 129.5
+offset_bottom = 268.0
+text = "Characters - 0"
+
+[node name="WordCount" type="Label" parent="MyPC/FileInfo"]
+visible = false
+layout_mode = 0
+offset_left = 22.5
+offset_top = 270.0
+offset_right = 129.5
+offset_bottom = 296.0
+text = "Words - 0"
+
+[node name="OpenFile" type="Button" parent="MyPC/FileInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 122.0
+offset_right = 50.0
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_fs565")
+text = "Open"
+
+[node name="ScrollFiles" type="ScrollContainer" parent="MyPC"]
+layout_mode = 2
+offset_left = 233.0
+offset_top = 75.0
+offset_right = 647.0
+offset_bottom = 560.0
+
+[node name="Files" type="VBoxContainer" parent="MyPC/ScrollFiles"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="File" type="Button" parent="MyPC/ScrollFiles/Files"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+text = "File.file"
+alignment = 0
+script = ExtResource("3_l052j")
+
+[node name="ScrollFilesImages" type="ScrollContainer" parent="MyPC"]
+visible = false
+layout_mode = 0
+offset_left = 233.0
+offset_top = 75.0
+offset_right = 647.0
+offset_bottom = 560.0
+
+[node name="Files" type="VBoxContainer" parent="MyPC/ScrollFilesImages"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollFilesVideos" type="ScrollContainer" parent="MyPC"]
+visible = false
+layout_mode = 0
+offset_left = 233.0
+offset_top = 75.0
+offset_right = 647.0
+offset_bottom = 560.0
+
+[node name="Files" type="VBoxContainer" parent="MyPC/ScrollFilesVideos"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollFilesDocuments" type="ScrollContainer" parent="MyPC"]
+visible = false
+layout_mode = 0
+offset_left = 233.0
+offset_top = 75.0
+offset_right = 647.0
+offset_bottom = 560.0
+
+[node name="Files" type="VBoxContainer" parent="MyPC/ScrollFilesDocuments"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollFilesAudio" type="ScrollContainer" parent="MyPC"]
+visible = false
+layout_mode = 0
+offset_left = 233.0
+offset_top = 75.0
+offset_right = 647.0
+offset_bottom = 560.0
+
+[node name="Files" type="VBoxContainer" parent="MyPC/ScrollFilesAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreateFile" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -88.0
+offset_right = 144.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oi1yi")
+
+[node name="LineEdit" type="LineEdit" parent="CreateFile"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 73.0
+offset_right = 276.0
+offset_bottom = 112.0
+theme = ExtResource("2_fs565")
+placeholder_text = "File Name"
+
+[node name="FileOptions" type="OptionButton" parent="CreateFile"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 122.0
+offset_right = 136.0
+offset_bottom = 162.0
+theme = ExtResource("2_fs565")
+alignment = 1
+
+[node name="Create" type="Button" parent="CreateFile"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 122.0
+offset_right = 276.0
+offset_bottom = 162.0
+theme = ExtResource("2_fs565")
+text = "Create File"
+
+[node name="Toolbar" type="Panel" parent="CreateFile"]
+layout_mode = 0
+offset_right = 289.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_krwga")
+
+[node name="File_X" type="Button" parent="CreateFile/Toolbar"]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 9.0
+offset_right = 280.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_mtccr")
+text = "X"
+
+[node name="Title" type="Label" parent="CreateFile/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_right = 84.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_fs565")
+text = "Create File"
+horizontal_alignment = 1
+
+[node name="Dragger2" type="Button" parent="CreateFile/Toolbar"]
+layout_mode = 0
+offset_right = 235.0
+offset_bottom = 51.0
+focus_mode = 0
+flat = true
+
+[node name="ChooseImage" type="Button" parent="CreateFile"]
+visible = false
+layout_mode = 0
+offset_left = 14.0
+offset_top = 177.0
+offset_right = 146.0
+offset_bottom = 217.0
+theme = ExtResource("2_fs565")
+text = "Choose Image"
+
+[node name="OpenRes" type="Button" parent="CreateFile"]
+visible = false
+layout_mode = 0
+offset_left = 158.0
+offset_top = 177.0
+offset_right = 276.0
+offset_bottom = 217.0
+theme = ExtResource("2_fs565")
+text = "Open res://"
+
+[node name="ChooseAudio" type="Button" parent="CreateFile"]
+visible = false
+layout_mode = 0
+offset_left = 14.0
+offset_top = 177.0
+offset_right = 146.0
+offset_bottom = 217.0
+theme = ExtResource("2_fs565")
+text = "Choose Audio"
+
+[node name="AudioChoose" type="FileDialog" parent="CreateFile"]
+title = "Open MP3."
+position = Vector2i(224, 218)
+size = Vector2i(1088, 727)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+
+[connection signal="pressed" from="MyPC/Toolbar/MyPC_X" to="." method="_on_my_pc_x_pressed"]
+[connection signal="pressed" from="MyPC/Toolbar/CreateFile" to="." method="_on_create_file_pressed"]
+[connection signal="pressed" from="MyPC/Toolbar/MyPC_M" to="." method="_on_my_pc_m_pressed"]
+[connection signal="file_selected" from="MyPC/FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="MyPC/FileInfo/OpenFile" to="." method="_on_open_file_pressed"]
+[connection signal="item_selected" from="CreateFile/FileOptions" to="." method="_on_file_options_item_selected"]
+[connection signal="pressed" from="CreateFile/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="CreateFile/Toolbar/File_X" to="." method="_on_file_x_pressed"]
+[connection signal="pressed" from="CreateFile/ChooseImage" to="." method="_on_choose_image_pressed"]
+[connection signal="pressed" from="CreateFile/OpenRes" to="." method="_on_open_res_pressed"]
+[connection signal="pressed" from="CreateFile/ChooseAudio" to="." method="_on_choose_audio_pressed"]
+[connection signal="file_selected" from="CreateFile/AudioChoose" to="." method="_on_audio_choose_file_selected"]

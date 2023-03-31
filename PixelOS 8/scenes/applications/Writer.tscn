@@ -1,0 +1,294 @@
+[gd_scene load_steps=9 format=3 uid="uid://buo1qu0utsr4l"]
+
+[ext_resource type="Script" path="res://scripts/Writer.gd" id="1_ftkby"]
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_penho"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vodf8"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkdya"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_412w2"]
+bg_color = Color(0.6, 0.0313726, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5ccm"]
+bg_color = Color(0.52549, 0.00392157, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qofac"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1sh1"]
+bg_color = Color(0.52549, 0.00392157, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ftkby")
+
+[node name="Writer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -886.5
+offset_top = -552.0
+offset_right = 886.5
+offset_bottom = 552.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vodf8")
+
+[node name="Toolbar" type="Panel" parent="Writer"]
+layout_mode = 0
+offset_right = 1773.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mkdya")
+
+[node name="MyPC_X" type="Button" parent="Writer/Toolbar"]
+layout_mode = 0
+offset_left = 1726.0
+offset_top = 9.0
+offset_right = 1764.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_412w2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e5ccm")
+text = "X"
+
+[node name="Title" type="Label" parent="Writer/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -13.0
+offset_right = 416.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_penho")
+text = "untitled1 - Pixel Writeer"
+horizontal_alignment = 1
+
+[node name="Dragger" type="Button" parent="Writer/Toolbar"]
+layout_mode = 0
+offset_right = 1711.0
+offset_bottom = 52.0
+focus_mode = 0
+flat = true
+
+[node name="TextEdit" type="TextEdit" parent="Writer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -389.5
+offset_top = -495.5
+offset_right = 389.5
+offset_bottom = 507.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_penho")
+wrap_mode = 1
+
+[node name="DocumentName" type="LineEdit" parent="Writer"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 68.0
+offset_right = 475.0
+offset_bottom = 108.0
+theme = ExtResource("1_penho")
+placeholder_text = "Enter Document Name"
+
+[node name="Infobar" type="Panel" parent="Writer"]
+layout_mode = 0
+offset_top = 1062.0
+offset_right = 1773.0
+offset_bottom = 1104.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qofac")
+
+[node name="CharCount" type="Label" parent="Writer/Infobar"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 9.0
+offset_right = 132.0
+offset_bottom = 35.0
+text = "Characters - 0"
+
+[node name="WordCount" type="Label" parent="Writer/Infobar"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 279.0
+offset_bottom = 35.0
+text = "Words - 0"
+
+[node name="File" type="OptionButton" parent="Writer"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 124.0
+offset_right = 120.0
+offset_bottom = 167.0
+theme = ExtResource("1_penho")
+alignment = 1
+item_count = 3
+popup/item_0/text = "Save"
+popup/item_0/id = 0
+popup/item_1/text = "Open"
+popup/item_1/id = 1
+popup/item_2/text = "Export as .txt"
+popup/item_2/id = 3
+
+[node name="Settings" type="Button" parent="Writer"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 124.0
+offset_right = 256.0
+offset_bottom = 167.0
+theme = ExtResource("1_penho")
+text = "Settings"
+
+[node name="SaveMessage" type="Label" parent="Writer"]
+visible = false
+layout_mode = 0
+offset_left = 271.5
+offset_top = 133.0
+offset_right = 417.5
+offset_bottom = 159.0
+theme = ExtResource("1_penho")
+text = "Document Saved!"
+
+[node name="TimeTilHide" type="Timer" parent="Writer/SaveMessage"]
+wait_time = 4.0
+
+[node name="FileDialog" type="FileDialog" parent="Writer"]
+title = "Open File(s)"
+size = Vector2i(1074, 722)
+ok_button_text = "Open"
+file_mode = 1
+access = 1
+
+[node name="Settings" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -451.0
+offset_top = -358.5
+offset_right = 451.0
+offset_bottom = 358.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vodf8")
+
+[node name="Toolbar" type="Panel" parent="Settings"]
+layout_mode = 0
+offset_right = 902.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mkdya")
+
+[node name="Settings_X" type="Button" parent="Settings/Toolbar"]
+layout_mode = 0
+offset_left = 855.0
+offset_top = 9.0
+offset_right = 893.0
+offset_bottom = 47.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_412w2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e1sh1")
+text = "X"
+
+[node name="Title" type="Label" parent="Settings/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -13.0
+offset_right = 416.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_penho")
+text = "Writer Settings"
+horizontal_alignment = 1
+
+[node name="Dragger2" type="Button" parent="Settings/Toolbar"]
+layout_mode = 0
+offset_right = 843.0
+offset_bottom = 55.0
+focus_mode = 0
+flat = true
+
+[node name="AutosaveCheck" type="CheckBox" parent="Settings"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 79.5
+offset_right = 158.0
+offset_bottom = 112.5
+theme = ExtResource("1_penho")
+text = "Autosave"
+alignment = 1
+icon_alignment = 1
+
+[node name="TimeDuration" type="LineEdit" parent="Settings"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 132.5
+offset_right = 333.0
+offset_bottom = 174.5
+theme = ExtResource("1_penho")
+placeholder_text = "Time Between Autsave (secconds)"
+
+[node name="AutoSaveDuration" type="Timer" parent="."]
+wait_time = 300.0
+
+[connection signal="pressed" from="Writer/Toolbar/MyPC_X" to="." method="_on_my_pc_x_pressed"]
+[connection signal="text_changed" from="Writer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="text_submitted" from="Writer/DocumentName" to="." method="_on_document_name_text_submitted"]
+[connection signal="item_selected" from="Writer/File" to="." method="_on_file_item_selected"]
+[connection signal="pressed" from="Writer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="visibility_changed" from="Writer/SaveMessage" to="." method="_on_save_message_visibility_changed"]
+[connection signal="timeout" from="Writer/SaveMessage/TimeTilHide" to="." method="_on_time_til_hide_timeout"]
+[connection signal="file_selected" from="Writer/FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="Settings/Toolbar/Settings_X" to="." method="_on_settings_x_pressed"]
+[connection signal="toggled" from="Settings/AutosaveCheck" to="." method="_on_autosave_check_toggled"]
+[connection signal="text_submitted" from="Settings/TimeDuration" to="." method="_on_line_edit_text_submitted"]
+[connection signal="timeout" from="AutoSaveDuration" to="." method="_on_auto_save_duration_timeout"]
