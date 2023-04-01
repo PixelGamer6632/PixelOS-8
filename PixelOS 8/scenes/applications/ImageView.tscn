@@ -53,15 +53,23 @@ grow_vertical = 2
 script = ExtResource("1_avqjn")
 
 [node name="Display" type="Panel" parent="."]
-layout_mode = 0
-offset_top = 35.0
-offset_right = 1078.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -607.0
+offset_top = -342.5
+offset_right = 607.0
+offset_bottom = 342.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Toolbar" type="Panel" parent="Display"]
 layout_mode = 0
 offset_top = -35.0
-offset_right = 1078.0
+offset_right = 1214.0
 offset_bottom = 20.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_251qq")
 
@@ -84,16 +92,16 @@ horizontal_alignment = 1
 
 [node name="Dragger" type="Button" parent="Display/Toolbar"]
 layout_mode = 0
-offset_right = 1080.0
+offset_right = 1106.0
 offset_bottom = 53.0
 focus_mode = 0
 flat = true
 
 [node name="ImageView_X" type="Button" parent="Display/Toolbar"]
 layout_mode = 0
-offset_left = 1031.0
+offset_left = 1166.0
 offset_top = 8.0
-offset_right = 1069.0
+offset_right = 1204.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_m6iji")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ghs88")
@@ -101,9 +109,9 @@ text = "X"
 
 [node name="ImageView_M" type="Button" parent="Display/Toolbar"]
 layout_mode = 0
-offset_left = 981.0
+offset_left = 1116.0
 offset_top = 8.0
-offset_right = 1019.0
+offset_right = 1154.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_yi2f5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xtxit")
@@ -112,7 +120,7 @@ text = "__"
 [node name="Infobar" type="Panel" parent="Display"]
 layout_mode = 0
 offset_top = 678.0
-offset_right = 1078.0
+offset_right = 1214.0
 offset_bottom = 740.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e5qsn")
 

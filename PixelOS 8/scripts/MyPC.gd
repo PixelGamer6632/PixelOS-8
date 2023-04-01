@@ -173,6 +173,16 @@ func _on_create_pressed():
 	save(local_data)
 	local_data = load_game()
 	new_file.local_file_data = file_data
+	var all_files = new_file.duplicate()
+	match file_data["file_type"]:
+		"wdoc":
+			documents.add_child.call_deferred(all_files)
+		"png":
+			images.add_child.call_deferred(all_files)
+		"audio":
+			audio.add_child.call_deferred(all_files)
+		"video":
+			videos.add_child.call_deferred(all_files)
 	files.add_child.call_deferred(new_file)
 	file_options.text = "File Type"
 	file_options.selected = -1

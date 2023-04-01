@@ -94,6 +94,10 @@ func _on_close_tab_pressed():
 	var site_path = "/root/Control/Browser/Browser/Websites/"
 	get_node(site_path + str(browser_data[selected_tab]["site_id"])).hide()
 	get_node(tab_path + str(browser_data[selected_tab]["tab_id"])).hide()
+	for a in range(2):
+		var path = "/root/Control/Browser/Browser/Websites/" + str(a)
+		get_node(path).hide()
+	get_node("/root/Control/Browser/Browser/Websites/1").show()
 	print(browser_data)
 
 func _on_browser_m_pressed():

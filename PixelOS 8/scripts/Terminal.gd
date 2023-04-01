@@ -62,10 +62,11 @@ func _process(_delta):
 	
 	# Commands
 	if Input.is_action_just_pressed("execute_command") and open == true:
+		local_data = load_game()
 		if commands[2] in command_line.text: # help
 			command_line.text += str(commands)
 		elif commands[3] in command_line.text: # pixelos
-			command_line.text += "\n" + text_logo + "\n" + "PixelOS 8. Kernal version 1.0.1."
+			command_line.text += "\n" + text_logo + "\n" + str(local_data["settings"]["system"]["os_name"]) + ". " + str(local_data["settings"]["system"]["kernel_name"]) + " Kernal version 1.0.2. \n(C) " + str(local_data["settings"]["system"]["manufacturer"]) + "\n" + str(local_data["settings"]["system"]["ram"]) + "GB RAM."
 		elif commands[3] in command_line.text: # quit
 			self.hide()
 			command_line.text = ""

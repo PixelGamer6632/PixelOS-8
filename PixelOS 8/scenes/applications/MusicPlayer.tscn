@@ -186,6 +186,7 @@ theme = ExtResource("1_uywlq")
 text = "Replay"
 
 [node name="CoverDisplay" type="Panel" parent="MusicPlayer/Player"]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = -196.0
@@ -204,12 +205,23 @@ text = "Audio Name"
 
 [node name="Pause" type="Button" parent="MusicPlayer/Player"]
 layout_mode = 0
-offset_left = 594.0
+offset_left = 593.0
 offset_top = 43.0
-offset_right = 688.0
+offset_right = 687.0
 offset_bottom = 87.0
 theme = ExtResource("1_uywlq")
 text = "Pause"
+
+[node name="Autoplay" type="CheckBox" parent="MusicPlayer/Player"]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 45.0
+offset_right = 847.0
+offset_bottom = 85.0
+theme = ExtResource("1_uywlq")
+text = "Autoplay"
+flat = true
+alignment = 1
 
 [node name="ScrollMusic" type="ScrollContainer" parent="MusicPlayer"]
 layout_mode = 0
@@ -239,3 +251,4 @@ script = ExtResource("3_cm1gg")
 [connection signal="visibility_changed" from="MusicPlayer/Player/Play" to="." method="_on_play_visibility_changed"]
 [connection signal="pressed" from="MusicPlayer/Player/Replay" to="." method="_on_end_pressed"]
 [connection signal="pressed" from="MusicPlayer/Player/Pause" to="." method="_on_pause_pressed"]
+[connection signal="toggled" from="MusicPlayer/Player/Autoplay" to="." method="_on_autoplay_toggled"]

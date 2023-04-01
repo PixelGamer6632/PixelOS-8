@@ -23,6 +23,7 @@ var song_pos_hours: int = 0
 
 var selected: bool = false
 var open: bool = false
+var autoplay: bool = false
 
 var audio_files = []
 var path = "user://save_data.json"
@@ -60,7 +61,9 @@ func _on_value_increase_timeout():
 	
 	if track_progress.value == track_progress.max_value:
 		track_timer.stop()
-		track_progress = 0
+		track_progress.value = 0
+		if autoplay == true:
+			replay()
 
 func load_game():
 	var file = FileAccess.open(path,FileAccess.READ)
@@ -70,6 +73,15 @@ func load_game():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	local_data = load_game()
+
+func replay():
+	track_progress.value = 0
+	track_timer.stop()
+	track.play()
+	track_timer.start()
+	song_pos_secconds = 0
+	song_pos_minutes = 0
+	song_pos_hours = 0
 
 func _on_music_x_pressed():
 	track.stop()
@@ -83,13 +95,7 @@ func _on_music_x_pressed():
 	self.hide()
 
 func _on_end_pressed():
-	track_progress.value = 0
-	track_timer.stop()
-	track.play()
-	track_timer.start()
-	song_pos_secconds = 0
-	song_pos_minutes = 0
-	song_pos_hours = 0
+	replay()
 
 # This _process() function is how you can drag the window.
 var mouse_offset = get_global_mouse_position()
@@ -120,3 +126,6 @@ func _on_pause_pressed():
 	else:
 		pause.text = "Pause"
 		track_timer.start()
+
+func _on_autoplay_toggled(button_pressed):
+	autoplay = button_pressed

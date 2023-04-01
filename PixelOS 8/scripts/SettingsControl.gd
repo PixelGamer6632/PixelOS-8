@@ -34,6 +34,8 @@ extends Control
 @onready var change_day = $ChangePassName/Date/Day
 @onready var change_month = $ChangePassName/Date/Month
 @onready var change_year = $ChangePassName/Date/Year
+@onready var change_date = $ChangePassName/Date
+@onready var logo_label = $Settings/About/Logo/Label
 
 var wallpapers = {
 		0: {"name": "Ocean","path": "res://assets/images/Wallpapers/Ocean.png"},
@@ -41,7 +43,8 @@ var wallpapers = {
 		2: {"name": "PixelOS 7","path": "res://assets/images/Wallpapers/PixelOS7.png"},
 		3: {"name": "Galaxy","path": "res://assets/images/Wallpapers/Galaxy.jpg"},
 		4: {"name": "PixelOS 8","path": "res://assets/images/Wallpapers/PixelOS8Default.png"},
-		5: {"name": "Pixel 5 Years","path": "res://assets/images/Wallpapers/Pixel5YearsNotWide.png"}
+		5: {"name": "Pixel 5 Years","path": "res://assets/images/Wallpapers/Pixel5YearsNotWide.png"},
+		6: {"name": "House During Sunset","path": "res://assets/images/Wallpapers/House.jpg"}
 	}
 
 var selected: bool = false
@@ -70,13 +73,26 @@ func load_game():
 func _ready():
 	print(wallpaper)
 	local_data = load_game()
+	
+	logo_label.text = str(local_data["settings"]["system"]["os_name"])
+	ram.value = int(local_data["settings"]["system"]["ram"])
+	power_source_input.text = local_data["settings"]["world_building"]["power_source"]
+	currency_input.text = local_data["settings"]["world_building"]["currency"]
+	kernel_name.text = local_data["settings"]["system"]["kernel_name"]
+	model_name.text = local_data["settings"]["system"]["model_name"]
+	location.text = local_data["settings"]["personalization"]["location"]
+	manufacturer.text = local_data["settings"]["system"]["manufacturer"]
+	os_name.text = local_data["settings"]["system"]["os_name"]
 	username_display.text = local_data["username"]
 	wallpaper_select.text = "Wallpaper"
+	
 	for a in range(len(sections)):
 		var new_section = section.duplicate()
 		new_section.show()
 		new_section.text = sections[a]
 		new_section.name = str(a)
+		if new_section.text == "System":
+			new_section.disabled = true
 		categories.add_child.call_deferred(new_section)
 	for b in range(len(wallpapers)):
 		wallpaper_select.get_popup().add_item(wallpapers[b]["name"])
@@ -94,6 +110,9 @@ func _on_change_name_pressed():
 	change_menu.show()
 	change_type = "name"
 	change_menu_title.text = "Change Profile Name"
+	change_input.show()
+	change_date.hide()
+	change_input.placeholder_text = "Enter New Name"
 
 func _on_confirm_pressed():
 	match change_type:
@@ -102,9 +121,9 @@ func _on_confirm_pressed():
 		"password":
 			local_data["password"] = str(change_input.text)
 		"date":
-			local_data["date_time"]["day"] = int(change_day.text)
-			local_data["date_time"]["month"] = int(change_month.text)
-			local_data["date_time"]["year"] = int(change_year.text)
+			local_data["date_time"]["day"] = int(change_day.value)
+			local_data["date_time"]["month"] = int(change_month.value)
+			local_data["date_time"]["year"] = int(change_year.value)
 	save(local_data)
 	change_input.text = ""
 	username_display.text = local_data["username"]
@@ -115,6 +134,9 @@ func _on_change_pass_pressed():
 	change_menu.show()
 	change_type = "password"
 	change_menu_title.text = "Change Password"
+	change_input.show()
+	change_date.hide()
+	change_input.placeholder_text = "Enter New Password"
 
 func _on_wallpaper_select_item_selected(_index):
 	var stylebox = StyleBoxTexture.new()
@@ -186,6 +208,7 @@ func _on_internet_active_toggled(button_pressed):
 
 func _on_os_name_text_submitted(new_text):
 	local_data["settings"]["system"]["os_name"] = str(new_text)
+	logo_label.text = str(new_text)
 	save(local_data)
 	local_data = load_game()
 
@@ -222,13 +245,16 @@ func _on_file_dialog_file_selected(path):
 @onready var power_source_input = get_node("/root/Control/Settings/Settings/WorldBuilding/PowerSource")
 @onready var currency_input = get_node("/root/Control/Settings/Settings/WorldBuilding/Currency")
 func _on_apply_pressed():
-	save(local_data)
 	local_data = load_game()
 	local_data["settings"]["world_building"]["currency"] = str(currency.text)
 	local_data["settings"]["world_building"]["power_source"] = str(power_source_input.text)
 	local_data["settings"]["system"]["kernel_name"] = str(kernel_name.text)
 	local_data["settings"]["system"]["model_name"] = str(model_name.text)
+	local_data["settings"]["system"]["ram"] = str(ram.value)
+	local_data["settings"]["system"]["manufacturer"] = str(manufacturer.text)
 	local_data["settings"]["personalization"]["location"] = str(location.text)
+	local_data["settings"]["system"]["os_name"] = str(os_name.text)
+	save(local_data)
 
 func _on_music_x_2_pressed():
 	self.hide()
@@ -237,3 +263,5 @@ func _on_change_date_pressed():
 	change_type = "date"
 	change_menu.show()
 	change_menu_title.text = "Change Date"
+	change_input.hide()
+	change_date.show()
