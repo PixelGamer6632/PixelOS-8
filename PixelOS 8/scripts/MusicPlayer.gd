@@ -12,8 +12,14 @@ extends Control
 
 @export var current_song = ""
 @export var song_name = ""
+@export var song_string_time = ""
 @export var song_id: int = 0
+@export var song_length: int = 0
 @export var local_data = {}
+
+var song_pos_secconds = 0
+var song_pos_minutes: int = 0
+var song_pos_hours: int = 0
 
 var selected: bool = false
 var open: bool = false
@@ -22,22 +28,35 @@ var audio_files = []
 var path = "user://save_data.json"
 
 func _on_play_pressed():
+	song_pos_secconds = 0
+	song_pos_minutes = 0
+	song_pos_hours = 0
 	track.play()
 	track_timer.start()
 
 # If progress bar reaches the end, the bar will reset back to 0.
 var song_path = "/root/Control/MusicPlayer/MusicPlayer/MusicList/"
 func _on_value_increase_timeout():
+	var song_string = ""
 #	var song = get_node(song_path + str(song_id))
 	track_progress.value += 1
-#	song.secconds -= 1
-#	if song.secconds == 0:
-#		song.minutes -= 1
-#		song.secconds = 59
-#		if song.minutes == 0:
-#			song.hours -= 1
-#			song.minutes = 59
-#	song_time.text = str(song.hours) + ":" + str(song.minutes) + ":" + str(song.secconds)
+	song_pos_secconds += 1
+	if song_pos_secconds == 60:
+		song_pos_minutes += 1
+		song_pos_secconds = 0
+		if song_pos_minutes == 60:
+			song_pos_hours += 1
+			song_pos_minutes = 0
+	if song_pos_secconds < 10:
+		song_string = "0" + str(song_pos_secconds)
+	else:
+		song_string = song_pos_secconds
+	print(song_string_time)
+	if song_pos_hours > 0:
+		song_time.text = str(song_pos_hours) + ":" + str(song_pos_minutes) + ":" + str(song_string) + " / " + song_string_time
+	else:
+		song_time.text = str(song_pos_minutes) + ":" + str(song_string) + " / " + song_string_time
+	song_string = ""
 	
 	if track_progress.value == track_progress.max_value:
 		track_timer.stop()
@@ -58,6 +77,9 @@ func _on_music_x_pressed():
 	track_progress.value = 0
 	song_time.text = "0:00"
 	audio_name.text = "No Audio Selected."
+	song_pos_secconds = 0
+	song_pos_minutes = 0
+	song_pos_hours = 0
 	self.hide()
 
 func _on_end_pressed():
@@ -65,6 +87,9 @@ func _on_end_pressed():
 	track_timer.stop()
 	track.play()
 	track_timer.start()
+	song_pos_secconds = 0
+	song_pos_minutes = 0
+	song_pos_hours = 0
 
 # This _process() function is how you can drag the window.
 var mouse_offset = get_global_mouse_position()
@@ -90,6 +115,8 @@ func _on_music_m_pressed():
 func _on_pause_pressed():
 	track.stream_paused = !track.stream_paused
 	if track.stream_paused == true:
+		track_timer.stop()
 		pause.text = "Resume"
 	else:
 		pause.text = "Pause"
+		track_timer.start()

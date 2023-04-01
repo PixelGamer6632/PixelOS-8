@@ -124,7 +124,7 @@ offset_top = 7.5
 offset_right = 111.5
 offset_bottom = 45.5
 theme = ExtResource("2_fs565")
-text = "Create"
+text = "New File"
 
 [node name="Dragger" type="Button" parent="MyPC/Toolbar"]
 layout_mode = 0
@@ -407,7 +407,7 @@ offset_top = 177.0
 offset_right = 276.0
 offset_bottom = 217.0
 theme = ExtResource("2_fs565")
-text = "Open res://"
+text = "Open user://"
 
 [node name="ChooseAudio" type="Button" parent="CreateFile"]
 visible = false
@@ -420,7 +420,7 @@ theme = ExtResource("2_fs565")
 text = "Choose Audio"
 
 [node name="AudioChoose" type="FileDialog" parent="CreateFile"]
-title = "Open MP3."
+title = "Open a File"
 position = Vector2i(224, 218)
 size = Vector2i(1088, 727)
 ok_button_text = "Open"

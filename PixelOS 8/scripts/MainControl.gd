@@ -108,11 +108,12 @@ func load_game():
 func set_image(node,file):
 	var stylebox = StyleBoxTexture.new()
 	var split_image = str(file).split("://")
+	
+	# If its a custom wallpaper (user), it will set it differently then if it was a built-in wallpaper (res).
 	if split_image[0] == "user":
 		var image = Image.new()
 		var photo = FileAccess.open(file,FileAccess.READ)
 		var buffer = photo.get_buffer(photo.get_length())
-		
 		image.load_png_from_buffer(buffer)
 		var texture = ImageTexture.create_from_image(image)
 		stylebox.texture = texture

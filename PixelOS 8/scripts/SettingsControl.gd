@@ -31,6 +31,9 @@ extends Control
 @onready var currency = $Settings/WorldBuilding/Currency
 @onready var power_source = $Settings/WorldBuilding/PowerSource
 @onready var location = $Settings/Personalize/ChangeLocation
+@onready var change_day = $ChangePassName/Date/Day
+@onready var change_month = $ChangePassName/Date/Month
+@onready var change_year = $ChangePassName/Date/Year
 
 var wallpapers = {
 		0: {"name": "Ocean","path": "res://assets/images/Wallpapers/Ocean.png"},
@@ -93,13 +96,17 @@ func _on_change_name_pressed():
 	change_menu_title.text = "Change Profile Name"
 
 func _on_confirm_pressed():
-	if change_type == "name":
-		local_data["username"] = str(change_input.text)
-	else:
-		local_data["password"] = str(change_input.text)
+	match change_type:
+		"name":
+			local_data["username"] = str(change_input.text)
+		"password":
+			local_data["password"] = str(change_input.text)
+		"date":
+			local_data["date_time"]["day"] = int(change_day.text)
+			local_data["date_time"]["month"] = int(change_month.text)
+			local_data["date_time"]["year"] = int(change_year.text)
 	save(local_data)
 	change_input.text = ""
-	
 	username_display.text = local_data["username"]
 	menu_user_display.text = local_data["username"]
 	launcher_name.text = local_data["username"]
@@ -225,3 +232,8 @@ func _on_apply_pressed():
 
 func _on_music_x_2_pressed():
 	self.hide()
+
+func _on_change_date_pressed():
+	change_type = "date"
+	change_menu.show()
+	change_menu_title.text = "Change Date"

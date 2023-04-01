@@ -45,6 +45,7 @@ func _pressed():
 		#var cover = newstream.get_data()
 		player.stream = newstream
 		track_progress.max_value = player.stream.get_length()
+		music_player.song_length = player.stream.get_length()
 		#if cover.size() > 0:
 		#	
 		#	var tag_lib = Tag
@@ -72,11 +73,15 @@ func _pressed():
 					minutes = 0
 					hours += 1
 		if hours == 0:
-			time_length.text = str(minutes) + ":" + str(secconds)
+			time_length.text = "0:00 / " + str(minutes) + ":" + str(secconds)
+			music_player.song_string_time = str(minutes) + ":" + str(secconds)
 		elif minutes == 0:
-			time_length.text = str(secconds)
+			time_length.text = "0:00 / " + str(secconds)
+			music_player.song_string_time = str(secconds)
 		else:
-			time_length.text = str(hours) + ":" + str(minutes) + ":" + str(secconds)
+			time_length.text = "0:00 / " + str(hours) + ":" + str(minutes) + ":" + str(secconds)
+			music_player.song_string_time = str(hours) + ":" + str(minutes) + ":" + str(secconds)
 		music_player.song_id = id
+		
 	else:
 		load_error.show()

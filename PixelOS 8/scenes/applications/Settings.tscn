@@ -221,14 +221,14 @@ offset_bottom = 341.0
 theme = ExtResource("1_vnhs5")
 placeholder_text = "Manufacturer"
 
-[node name="RAM" type="LineEdit" parent="Settings/System"]
+[node name="RAM" type="SpinBox" parent="Settings/System"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 360.0
 offset_right = 298.0
 offset_bottom = 407.0
 theme = ExtResource("1_vnhs5")
-placeholder_text = "RAM"
+suffix = "GB RAM"
 
 [node name="Personalize" type="Control" parent="Settings"]
 visible = false
@@ -393,7 +393,7 @@ offset_right = 137.0
 offset_bottom = 166.0
 theme = ExtResource("1_vnhs5")
 theme_override_font_sizes/font_size = 22
-text = "Version: 1.0"
+text = "Version: 1.0.1"
 
 [node name="Apply" type="Button" parent="Settings"]
 layout_mode = 1
@@ -445,9 +445,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_eyfob")
 [node name="Change_X" type="Button" parent="ChangePassName/Toolbar"]
 layout_mode = 0
 offset_left = 349.0
-offset_top = 9.0
+offset_top = 8.0
 offset_right = 387.0
-offset_bottom = 47.0
+offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ub62i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e2pmy")
 text = "X"
@@ -470,6 +470,7 @@ text = "Change Profile Name"
 horizontal_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="ChangePassName"]
+visible = false
 layout_mode = 0
 offset_left = 13.0
 offset_top = 69.0
@@ -494,12 +495,43 @@ grow_vertical = 0
 theme = ExtResource("1_vnhs5")
 text = "Confirm"
 
+[node name="Date" type="Control" parent="ChangePassName"]
+anchors_preset = 0
+offset_left = 47.0
+offset_top = 69.0
+offset_right = 345.0
+offset_bottom = 108.0
+
+[node name="Day" type="SpinBox" parent="ChangePassName/Date"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 1.0
+offset_right = 94.0
+offset_bottom = 38.0
+theme = ExtResource("1_vnhs5")
+
+[node name="Month" type="SpinBox" parent="ChangePassName/Date"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 1.0
+offset_right = 190.0
+offset_bottom = 38.0
+theme = ExtResource("1_vnhs5")
+
+[node name="Year" type="SpinBox" parent="ChangePassName/Date"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 1.0
+offset_right = 286.0
+offset_bottom = 38.0
+theme = ExtResource("1_vnhs5")
+
 [connection signal="pressed" from="Settings/Toolbar/MyPC_X" to="." method="_on_my_pc_x_pressed"]
 [connection signal="pressed" from="Settings/Toolbar/clicker" to="." method="_on_clicker_pressed"]
 [connection signal="pressed" from="Settings/Toolbar/Music_X2" to="." method="_on_music_x_2_pressed"]
 [connection signal="pressed" from="Settings/System/ChangeName" to="." method="_on_change_name_pressed"]
 [connection signal="pressed" from="Settings/System/ChangePass" to="." method="_on_change_pass_pressed"]
-[connection signal="pressed" from="Settings/System/ChangeDate" to="." method="_on_change_pass_pressed"]
+[connection signal="pressed" from="Settings/System/ChangeDate" to="." method="_on_change_date_pressed"]
 [connection signal="item_selected" from="Settings/Personalize/WallpaperSelect" to="." method="_on_wallpaper_select_item_selected"]
 [connection signal="pressed" from="Settings/Personalize/ChangePFP" to="." method="_on_change_pfp_pressed"]
 [connection signal="file_selected" from="Settings/Personalize/ChoosePFP" to="." method="_on_choose_pfp_file_selected"]

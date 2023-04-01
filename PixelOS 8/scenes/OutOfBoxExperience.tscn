@@ -167,32 +167,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Day" type="LineEdit" parent="Panel/1"]
+[node name="Day" type="SpinBox" parent="Panel/1"]
 layout_mode = 0
 offset_left = 42.0
 offset_top = 94.0
 offset_right = 109.0
 offset_bottom = 131.0
 theme = ExtResource("2_tvg1g")
-placeholder_text = "Day"
 
-[node name="Month" type="LineEdit" parent="Panel/1"]
+[node name="Month" type="SpinBox" parent="Panel/1"]
 layout_mode = 0
 offset_left = 129.0
 offset_top = 94.0
 offset_right = 196.0
 offset_bottom = 132.0
 theme = ExtResource("2_tvg1g")
-placeholder_text = "Month"
 
-[node name="Year" type="LineEdit" parent="Panel/1"]
+[node name="Year" type="SpinBox" parent="Panel/1"]
 layout_mode = 0
 offset_left = 216.0
 offset_top = 94.0
 offset_right = 353.0
 offset_bottom = 133.0
 theme = ExtResource("2_tvg1g")
-placeholder_text = "Year"
 
 [node name="Location" type="LineEdit" parent="Panel/1"]
 layout_mode = 0
@@ -284,8 +281,5 @@ text = "pixel games"
 [connection signal="file_selected" from="Panel/0/ChoosePFPFile" to="." method="_on_choose_pfp_file_file_selected"]
 [connection signal="visibility_changed" from="Panel/0/ValidWarning" to="." method="_on_valid_warning_visibility_changed"]
 [connection signal="timeout" from="Panel/0/ValidWarning/Timer" to="." method="_on_timer_timeout"]
-[connection signal="text_submitted" from="Panel/1/Day" to="." method="_on_day_text_submitted"]
-[connection signal="text_submitted" from="Panel/1/Month" to="." method="_on_month_text_submitted"]
-[connection signal="text_submitted" from="Panel/1/Year" to="." method="_on_year_text_submitted"]
 [connection signal="text_submitted" from="Panel/1/Location" to="." method="_on_location_text_submitted"]
 [connection signal="pressed" from="Panel/Next" to="." method="_on_next_pressed"]

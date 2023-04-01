@@ -75,6 +75,8 @@ func _ready():
 		new_core_folder.show()
 		new_core_folder.text = core_folders[a]
 		new_core_folder.name = core_folders[a]
+		if new_core_folder.text == "Home":
+			new_core_folder.disabled = true
 		core_folder_container.add_child.call_deferred(new_core_folder)
 	for b in range(len(file_types)):
 		file_options.get_popup().add_item(file_types[b])
@@ -240,7 +242,7 @@ func _on_open_file_pressed():
 			var player = get_node("/root/Control/VideoPlayer/VideoPlayer/Video")
 			var video = VideoStreamTheora.new()
 			var file = FileAccess.open(selected_file_data["video"],FileAccess.READ)
-			var file_data = file.get_buffer(file.get_length())
+			#var file_data = file.get_buffer(file.get_length())
 			video.set_file(selected_file_data["video"])
 			player.stream = video
 			#video_player_track.max_value = player.stream.get_length()

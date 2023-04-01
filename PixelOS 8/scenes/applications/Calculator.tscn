@@ -80,9 +80,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hstdy")
 [node name="Calculator_X" type="Button" parent="Calculator/Toolbar"]
 layout_mode = 0
 offset_left = 334.0
-offset_top = 9.0
+offset_top = 8.0
 offset_right = 372.0
-offset_bottom = 47.0
+offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_euywn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_111uy")
 text = "X"
@@ -114,9 +114,9 @@ flat = true
 [node name="Calculator_M" type="Button" parent="Calculator/Toolbar"]
 layout_mode = 0
 offset_left = 284.0
-offset_top = 9.0
+offset_top = 8.0
 offset_right = 322.0
-offset_bottom = 47.0
+offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_61rkn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lgit3")
 text = "__"

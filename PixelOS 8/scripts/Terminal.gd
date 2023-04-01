@@ -65,7 +65,7 @@ func _process(_delta):
 		if commands[2] in command_line.text: # help
 			command_line.text += str(commands)
 		elif commands[3] in command_line.text: # pixelos
-			command_line.text += "\n" + text_logo + "\n" + "PixelOS 8. Kernal version 0.0."
+			command_line.text += "\n" + text_logo + "\n" + "PixelOS 8. Kernal version 1.0.1."
 		elif commands[3] in command_line.text: # quit
 			self.hide()
 			command_line.text = ""
