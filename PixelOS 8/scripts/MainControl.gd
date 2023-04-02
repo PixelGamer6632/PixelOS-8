@@ -134,6 +134,7 @@ func _ready():
 		var new_app = mypc_icon.duplicate()
 		new_app.icon = load(dock_apps[a]["icon"])
 		new_app.name = dock_apps[a]["name"]
+		new_app.internet_active = local_data["settings"]["system"]["internet_active"]
 		dock_container.add_child.call_deferred(new_app)
 	for b in range(len(launcher_apps)): # Launcher icons are preloaded here.
 		var new_launcher_app = launcher_app.duplicate()

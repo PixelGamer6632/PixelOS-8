@@ -153,7 +153,7 @@ func _on_create_pressed():
 	match file_options.get_item_text(file_options.selected):
 		"wdoc":
 			file_data["text"] = ""
-			file_data["text_name"] = "untitled"
+			file_data["text_name"] = file_data["name"]
 			file_data["char_count"] = 0
 			file_data["word_count"] = 0
 		"audio":
@@ -243,6 +243,8 @@ func _on_open_file_pressed():
 			writer_name.text = selected_file_data["text_name"] + " - Pixel Writer"
 			writer_char.text = "Characters - " + str(selected_file_data["char_count"])
 			writer_word.text = "Words - " + str(selected_file_data["word_count"])
+			print("e")
+			print(selected_file_data)
 		"png":
 			image_view.show()
 		"audio":

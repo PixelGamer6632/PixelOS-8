@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cyrgleki50jp0"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cyrgleki50jp0"]
 
 [ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="1_2k8mo"]
 
@@ -9,15 +9,17 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xo4jk"]
-bg_color = Color(0.380392, 0.380392, 0.380392, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csh47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7i45r"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7i45r"]
-bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khcuq"]
+bg_color = Color(0.443137, 0.443137, 0.443137, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -42,8 +44,9 @@ corner_radius_bottom_left = 15
 [resource]
 Button/fonts/font = ExtResource("1_2k8mo")
 Button/styles/disabled = SubResource("StyleBoxFlat_6ajav")
-Button/styles/hover = SubResource("StyleBoxFlat_xo4jk")
+Button/styles/hover = SubResource("StyleBoxFlat_csh47")
 Button/styles/normal = SubResource("StyleBoxFlat_7i45r")
+Button/styles/pressed = SubResource("StyleBoxFlat_khcuq")
 Label/fonts/font = ExtResource("1_2k8mo")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_wepyw")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_vg8fw")

@@ -456,7 +456,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(537, 327)
+position = Vector2(1066, 709)
 
 [connection signal="pressed" from="Toolbar/OpenLauncher" to="." method="_on_open_launcher_pressed"]
 [connection signal="pressed" from="Toolbar/MenuOpen" to="." method="_on_menu_open_pressed"]

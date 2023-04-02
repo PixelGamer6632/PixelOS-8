@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0kqusfjuai0j"]
+[gd_scene load_steps=12 format=3 uid="uid://b0kqusfjuai0j"]
 
 [ext_resource type="Script" path="res://scripts/Calculator.gd" id="1_5inug"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_mj144"]
@@ -33,6 +33,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y5qi"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61rkn"]
 bg_color = Color(0.262745, 0.262745, 0.262745, 1)
 corner_radius_top_left = 8
@@ -42,6 +49,13 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgit3"]
 bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53cyx"]
+bg_color = Color(0.67451, 0.67451, 0.67451, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -85,6 +99,7 @@ offset_right = 372.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_euywn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_111uy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0y5qi")
 text = "X"
 
 [node name="Title" type="Label" parent="Calculator/Toolbar"]
@@ -119,6 +134,7 @@ offset_right = 322.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_61rkn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lgit3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_53cyx")
 text = "__"
 
 [node name="3" type="HBoxContainer" parent="Calculator"]

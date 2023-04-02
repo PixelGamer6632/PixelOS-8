@@ -10,6 +10,12 @@ extends Button
 @onready var calculator = get_node("/root/Control/Calculator")
 @onready var music_player = get_node("/root/Control/MusicPlayer")
 
+@onready var error_title = get_node("/root/Control/ImageError/Display/Toolbar/Title")
+@onready var error_text = get_node("/root/Control/ImageError/Display/Label")
+@onready var error = get_node("/root/Control/ImageError")
+
+@export var internet_active: bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _pressed():
 	launcher.hide()
@@ -22,7 +28,12 @@ func _pressed():
 		"Terminal":
 			terminal.show()
 		"Pixel_Browser":
-			browser.show()
+			if internet_active == true:
+				browser.show()
+			else:
+				error_title.text = "Network Error"
+				error_text.text = "Your computer cannot connect to the internet. Please try again later."
+				error.show()
 		"Calculator":
 			calculator.show()
 		"Music":

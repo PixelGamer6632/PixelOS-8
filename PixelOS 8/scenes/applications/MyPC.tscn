@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2g1xkgng1g7h"]
+[gd_scene load_steps=16 format=3 uid="uid://c2g1xkgng1g7h"]
 
 [ext_resource type="Script" path="res://scripts/MyPC.gd" id="1_8jr8s"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_fs565"]
@@ -35,6 +35,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kubq7"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuhg7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -47,6 +54,13 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j37n5"]
 bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ry5xc"]
+bg_color = Color(0.67451, 0.67451, 0.67451, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -98,6 +112,7 @@ offset_right = 920.0
 offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_mtccr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6bog2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kubq7")
 text = "X"
 
 [node name="Title" type="Label" parent="MyPC/Toolbar"]
@@ -142,6 +157,7 @@ offset_right = 871.0
 offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_uo28f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_j37n5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ry5xc")
 text = "__"
 
 [node name="Folders" type="VBoxContainer" parent="MyPC"]

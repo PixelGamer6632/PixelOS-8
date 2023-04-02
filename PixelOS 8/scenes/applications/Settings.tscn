@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bw3sl21veke8e"]
+[gd_scene load_steps=18 format=3 uid="uid://bw3sl21veke8e"]
 
 [ext_resource type="Script" path="res://scripts/SettingsControl.gd" id="1_1tgg3"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_vnhs5"]
@@ -34,6 +34,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqymj"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvmpj"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -51,6 +58,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1gq1"]
+bg_color = Color(0.67451, 0.67451, 0.67451, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="FontVariation" id="FontVariation_e4xir"]
 base_font = ExtResource("3_c5a43")
 
@@ -59,6 +73,13 @@ base_font = ExtResource("3_c5a43")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2pmy"]
 bg_color = Color(0.52549, 0.00392157, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1okw8"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -98,6 +119,7 @@ offset_right = 951.0
 offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ub62i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h371r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sqymj")
 text = "X"
 
 [node name="Title" type="Label" parent="Settings/Toolbar"]
@@ -133,6 +155,7 @@ offset_right = 903.0
 offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_kbj3y")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojmsy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w1gq1")
 text = "__"
 
 [node name="Username" type="Label" parent="Settings"]
@@ -450,6 +473,7 @@ offset_right = 387.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ub62i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e2pmy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1okw8")
 text = "X"
 
 [node name="Title" type="Label" parent="ChangePassName/Toolbar"]

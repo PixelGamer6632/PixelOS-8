@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://db0lcawsbaorr"]
+[gd_scene load_steps=14 format=3 uid="uid://db0lcawsbaorr"]
 
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_6h8ok"]
 [ext_resource type="Script" path="res://scripts/VideoPlayer.gd" id="1_n4nf3"]
@@ -32,6 +32,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a74y7"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5okn"]
 bg_color = Color(0.262745, 0.262745, 0.262745, 1)
 corner_radius_top_left = 8
@@ -41,6 +48,13 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7ahf"]
 bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t360j"]
+bg_color = Color(0.67451, 0.67451, 0.67451, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -136,6 +150,7 @@ offset_right = 1460.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_sc44p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jm2uf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a74y7")
 text = "X"
 
 [node name="Video_M" type="Button" parent="VideoPlayer/Toolbar"]
@@ -146,6 +161,7 @@ offset_right = 1410.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_x5okn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q7ahf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t360j")
 text = "__"
 
 [node name="Player" type="Panel" parent="VideoPlayer"]

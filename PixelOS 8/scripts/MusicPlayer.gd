@@ -9,6 +9,7 @@ extends Control
 @onready var song_time = $MusicPlayer/Player/ProgressBar/LengthTime
 @onready var audio_name = $MusicPlayer/Player/AudioName
 @onready var pause = $MusicPlayer/Player/Pause
+@onready var play = $MusicPlayer/Player/Play
 
 @export var current_song = ""
 @export var song_name = ""
@@ -34,6 +35,7 @@ func _on_play_pressed():
 	song_pos_hours = 0
 	track.play()
 	track_timer.start()
+	play.disabled = true
 
 # If progress bar reaches the end, the bar will reset back to 0.
 var song_path = "/root/Control/MusicPlayer/MusicPlayer/MusicList/"
@@ -62,6 +64,7 @@ func _on_value_increase_timeout():
 	if track_progress.value == track_progress.max_value:
 		track_timer.stop()
 		track_progress.value = 0
+		play.disabled = false
 		if autoplay == true:
 			replay()
 
@@ -75,6 +78,7 @@ func _ready():
 	local_data = load_game()
 
 func replay():
+	play.disabled = true
 	track_progress.value = 0
 	track_timer.stop()
 	track.play()
@@ -92,9 +96,11 @@ func _on_music_x_pressed():
 	song_pos_secconds = 0
 	song_pos_minutes = 0
 	song_pos_hours = 0
+	play.disabled = false
 	self.hide()
 
 func _on_end_pressed():
+	play.disabled = true
 	replay()
 
 # This _process() function is how you can drag the window.

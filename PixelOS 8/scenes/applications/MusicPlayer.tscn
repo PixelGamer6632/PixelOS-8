@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvwoeibjw6o4d"]
+[gd_scene load_steps=15 format=3 uid="uid://cvwoeibjw6o4d"]
 
 [ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="1_81x2m"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_uywlq"]
@@ -33,6 +33,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x66ql"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rbev"]
 bg_color = Color(0.262745, 0.262745, 0.262745, 1)
 corner_radius_top_left = 8
@@ -42,6 +49,13 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_te72m"]
 bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nu4o"]
+bg_color = Color(0.67451, 0.67451, 0.67451, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -122,6 +136,7 @@ offset_right = 1069.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_118op")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fxg17")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x66ql")
 text = "X"
 
 [node name="Music_M" type="Button" parent="MusicPlayer/Toolbar"]
@@ -132,6 +147,7 @@ offset_right = 1019.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_2rbev")
 theme_override_styles/hover = SubResource("StyleBoxFlat_te72m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8nu4o")
 text = "__"
 
 [node name="Player" type="Panel" parent="MusicPlayer"]

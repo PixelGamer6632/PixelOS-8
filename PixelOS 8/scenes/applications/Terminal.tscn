@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqhdd3kgdbj01"]
+[gd_scene load_steps=15 format=3 uid="uid://cqhdd3kgdbj01"]
 
 [ext_resource type="Script" path="res://scripts/Terminal.gd" id="1_ldxf0"]
 [ext_resource type="FontFile" uid="uid://c1e3btsfh3mx6" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="2_w6ifs"]
@@ -45,6 +45,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14xmd"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fymf"]
 bg_color = Color(0.262745, 0.262745, 0.262745, 1)
 corner_radius_top_left = 8
@@ -54,6 +61,13 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dif2v"]
 bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ii5t"]
+bg_color = Color(0.67451, 0.67451, 0.67451, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -113,6 +127,7 @@ offset_right = 1068.0
 offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_gceak")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5ten0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_14xmd")
 text = "X"
 
 [node name="Terminal_M" type="Button" parent="Terminal/Toolbar"]
@@ -123,6 +138,7 @@ offset_right = 1019.0
 offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_3fymf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dif2v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0ii5t")
 text = "__"
 
 [node name="Title" type="Label" parent="Terminal/Toolbar"]

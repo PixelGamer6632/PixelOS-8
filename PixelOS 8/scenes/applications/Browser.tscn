@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2hiaspa3oe40"]
+[gd_scene load_steps=21 format=3 uid="uid://d2hiaspa3oe40"]
 
 [ext_resource type="Script" path="res://scripts/Browser.gd" id="1_njjpb"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_k134c"]
@@ -36,6 +36,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45g3p"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5ccj"]
 bg_color = Color(0.262745, 0.262745, 0.262745, 1)
 corner_radius_top_left = 8
@@ -45,6 +52,13 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77qeo"]
 bg_color = Color(0.517647, 0.498039, 0.521569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f56ce"]
+bg_color = Color(0.67451, 0.67451, 0.67451, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -106,6 +120,7 @@ offset_right = 1764.0
 offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_xnha6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nj5av")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_45g3p")
 text = "X"
 
 [node name="Tabs" type="HBoxContainer" parent="Browser/Toolbar"]
@@ -138,6 +153,7 @@ offset_right = 1713.0
 offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_b5ccj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_77qeo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f56ce")
 text = "__"
 
 [node name="Websites" type="Control" parent="Browser"]

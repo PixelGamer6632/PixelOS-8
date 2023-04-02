@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://buo1qu0utsr4l"]
+[gd_scene load_steps=11 format=3 uid="uid://buo1qu0utsr4l"]
 
 [ext_resource type="Script" path="res://scripts/Writer.gd" id="1_ftkby"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_penho"]
@@ -32,6 +32,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kc3qq"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qofac"]
 bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 corner_radius_bottom_right = 15
@@ -39,6 +46,13 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1sh1"]
 bg_color = Color(0.52549, 0.00392157, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ht3vo"]
+bg_color = Color(0.878431, 0, 0.0666667, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -82,6 +96,7 @@ offset_right = 1764.0
 offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_412w2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e5ccm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kc3qq")
 text = "X"
 
 [node name="Title" type="Label" parent="Writer/Toolbar"]
@@ -231,6 +246,7 @@ offset_right = 893.0
 offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_412w2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e1sh1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ht3vo")
 text = "X"
 
 [node name="Title" type="Label" parent="Settings/Toolbar"]
