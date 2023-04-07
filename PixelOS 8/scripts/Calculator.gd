@@ -10,7 +10,7 @@ var selected: bool = false
 var gen_level: int = 0
 var button_pos: int = 0
 
-var buttons = ["1","2","3","+","4","5","6","x","7","8","9","-","C","0","∻","="]
+@export var buttons = ["1","2","3","+","4","5","6","x","7","8","9","-","C","0","∻","="]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +18,10 @@ func _ready():
 		var new_button = button.duplicate()
 		var container_path = "/root/Control/Calculator/Calculator/" + str(gen_level)
 		new_button.text = buttons[a]
+		new_button.name = str(a)
 		new_button.show()
+		if new_button.text == "=":
+			new_button.disabled = true
 		get_node(container_path).add_child.call_deferred(new_button)
 		button_pos += 1
 		if button_pos >= 4:

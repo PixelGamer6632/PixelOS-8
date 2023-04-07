@@ -160,6 +160,15 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_j37n5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ry5xc")
 text = "__"
 
+[node name="CleanFiles" type="Button" parent="MyPC/Toolbar"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 8.0
+offset_right = 273.0
+offset_bottom = 46.0
+theme = ExtResource("2_fs565")
+text = "Whipe All Files"
+
 [node name="Folders" type="VBoxContainer" parent="MyPC"]
 layout_mode = 0
 offset_left = 18.0
@@ -443,9 +452,94 @@ ok_button_text = "Open"
 file_mode = 0
 access = 1
 
+[node name="ChooseCover" type="Button" parent="CreateFile"]
+visible = false
+layout_mode = 0
+offset_left = 14.0
+offset_top = 231.0
+offset_right = 276.0
+offset_bottom = 271.0
+theme = ExtResource("2_fs565")
+text = "Choose Cover Image (optional)"
+
+[node name="CleanWarning" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -88.0
+offset_right = 144.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oi1yi")
+
+[node name="Toolbar" type="Panel" parent="CleanWarning"]
+layout_mode = 0
+offset_right = 289.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_krwga")
+
+[node name="Title" type="Label" parent="CleanWarning/Toolbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_right = 84.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_fs565")
+text = "Are you sure?"
+horizontal_alignment = 1
+
+[node name="Dragger2" type="Button" parent="CleanWarning/Toolbar"]
+layout_mode = 0
+offset_right = 235.0
+offset_bottom = 51.0
+focus_mode = 0
+flat = true
+
+[node name="Confirm" type="Button" parent="CleanWarning"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 124.0
+offset_right = 136.0
+offset_bottom = 162.0
+theme = ExtResource("2_fs565")
+text = "Confirm"
+
+[node name="Cancel" type="Button" parent="CleanWarning"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 124.0
+offset_right = 245.0
+offset_bottom = 162.0
+theme = ExtResource("2_fs565")
+text = "Cancel"
+
+[node name="Label" type="Label" parent="CleanWarning"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 62.0
+offset_right = 283.0
+offset_bottom = 114.0
+theme = ExtResource("2_fs565")
+text = "This will permanently remove all
+created files on your PC. Confirm?"
+
 [connection signal="pressed" from="MyPC/Toolbar/MyPC_X" to="." method="_on_my_pc_x_pressed"]
 [connection signal="pressed" from="MyPC/Toolbar/CreateFile" to="." method="_on_create_file_pressed"]
 [connection signal="pressed" from="MyPC/Toolbar/MyPC_M" to="." method="_on_my_pc_m_pressed"]
+[connection signal="pressed" from="MyPC/Toolbar/CleanFiles" to="." method="_on_clean_files_pressed"]
 [connection signal="file_selected" from="MyPC/FileDialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="MyPC/FileInfo/OpenFile" to="." method="_on_open_file_pressed"]
 [connection signal="item_selected" from="CreateFile/FileOptions" to="." method="_on_file_options_item_selected"]
@@ -455,3 +549,7 @@ access = 1
 [connection signal="pressed" from="CreateFile/OpenRes" to="." method="_on_open_res_pressed"]
 [connection signal="pressed" from="CreateFile/ChooseAudio" to="." method="_on_choose_audio_pressed"]
 [connection signal="file_selected" from="CreateFile/AudioChoose" to="." method="_on_audio_choose_file_selected"]
+[connection signal="pressed" from="CreateFile/ChooseCover" to="." method="_on_choose_cover_pressed"]
+[connection signal="pressed" from="CleanWarning/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="CleanWarning/Confirm" to="MyPC/ScrollFiles/Files/File" method="_on_confirm_pressed"]
+[connection signal="pressed" from="CleanWarning/Cancel" to="." method="_on_cancel_pressed"]

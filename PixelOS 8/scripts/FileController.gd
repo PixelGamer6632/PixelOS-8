@@ -12,6 +12,8 @@ extends Button
 @onready var word_count = get_node("/root/Control/MyPC/MyPC/FileInfo/WordCount")
 @onready var writer = get_node("/root/Control/Writer")
 
+@onready var confirm = get_node("/root/Control/MyPC/CleanWarning/Confirm")
+
 @export var local_file_data = {}
 @export var id = 0
 
@@ -32,6 +34,7 @@ func load_game():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	local_data = load_game()
+	confirm.pressed.connect(_on_confirm_pressed)
 
 func _pressed():
 	print(local_file_data)
@@ -53,10 +56,14 @@ func _pressed():
 			image_preview.add_theme_stylebox_override("panel",preview_tex)
 			image_view_display.add_theme_stylebox_override("panel",preview_tex)
 		"wdoc":
-			char_count.text = str(local_file_data["char_count"])
-			word_count.text = str(local_file_data["word_count"])
+			char_count.text = "Characters - " + str(local_file_data["char_count"])
+			word_count.text = "Words - " + str(local_file_data["word_count"])
 			word_count.show()
 			char_count.show()
 	no_prev_label.show()
 	mypc.selected_file_data = local_file_data
 	writer.selected_file = local_file_data
+
+func _on_confirm_pressed():
+	if self.text != "File.file":
+		self.queue_free()

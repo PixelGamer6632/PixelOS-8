@@ -9,7 +9,7 @@ func _pressed():
 	#var id2 = self.name
 	browser.selected_tab = int(id)
 	
-	for a in range(2):
+	for a in range(3):
 		var path = "/root/Control/Browser/Browser/Websites/" + str(a)
 		get_node(path).hide()
 	var path = "/root/Control/Browser/Browser/Websites/" + str(browser.browser_data[id]["site_id"])

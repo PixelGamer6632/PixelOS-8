@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://db0lcawsbaorr"]
+[gd_scene load_steps=15 format=3 uid="uid://db0lcawsbaorr"]
 
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_6h8ok"]
 [ext_resource type="Script" path="res://scripts/VideoPlayer.gd" id="1_n4nf3"]
+[ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="3_n7h0m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umifm"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -148,6 +149,7 @@ offset_left = 1422.0
 offset_top = 8.0
 offset_right = 1460.0
 offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("3_n7h0m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sc44p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jm2uf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a74y7")
@@ -159,10 +161,11 @@ offset_left = 1372.0
 offset_top = 8.0
 offset_right = 1410.0
 offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("3_n7h0m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_x5okn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q7ahf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t360j")
-text = "__"
+text = "_"
 
 [node name="Player" type="Panel" parent="VideoPlayer"]
 layout_mode = 1

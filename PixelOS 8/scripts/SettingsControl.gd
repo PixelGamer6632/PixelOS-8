@@ -19,6 +19,7 @@ extends Control
 @onready var about_tab = $Settings/About
 @onready var person_tab = $Settings/Personalize
 @onready var system_tab = $Settings/System
+@onready var world_tab = $Settings/WorldBuilding
 @onready var wallpaper_file = $Settings/Personalize/ChooseWallpaper
 @onready var dragger = $Settings/Toolbar/clicker
 @onready var file_dialog = $Settings/Personalize/FileDialog
@@ -99,9 +100,16 @@ func _ready():
 
 func _on_my_pc_x_pressed():
 	self.hide()
+	world_tab.hide()
 	about_tab.hide()
 	person_tab.hide()
 	system_tab.show()
+	for a in range(len(sections)):
+		var section_path = "/root/Control/Settings/Settings/Categories/" + str(a)
+		if get_node(section_path).text != "System":
+			get_node(section_path).disabled = false
+		else:
+			get_node(section_path).disabled = true
 
 func _on_change_x_pressed():
 	change_menu.hide()
@@ -265,3 +273,4 @@ func _on_change_date_pressed():
 	change_menu_title.text = "Change Date"
 	change_input.hide()
 	change_date.show()
+	

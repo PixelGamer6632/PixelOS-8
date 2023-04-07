@@ -10,6 +10,10 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csh47"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7i45r"]
 bg_color = Color(0.262745, 0.262745, 0.262745, 1)
@@ -48,5 +52,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_csh47")
 Button/styles/normal = SubResource("StyleBoxFlat_7i45r")
 Button/styles/pressed = SubResource("StyleBoxFlat_khcuq")
 Label/fonts/font = ExtResource("1_2k8mo")
+LineEdit/fonts/font = ExtResource("1_2k8mo")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_wepyw")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_vg8fw")

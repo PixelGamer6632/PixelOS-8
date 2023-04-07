@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6pcxiapde0f4"]
+
+[ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="1_odwkf"]
+[ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_11iqh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcxmy"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxmqe"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtx6i"]
+bg_color = Color(0.6, 0.443137, 0.694118, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_odwkf")
+
+[node name="Widget" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -60.0
+offset_right = 259.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qcxmy")
+
+[node name="Play" type="Button" parent="Widget"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.5
+offset_top = -111.0
+offset_right = -73.5
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("2_11iqh")
+text = "Play"
+
+[node name="Replay" type="Button" parent="Widget"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 28.5
+offset_right = 85.0
+offset_bottom = 58.5
+theme = ExtResource("2_11iqh")
+text = "Replay"
+
+[node name="Pause" type="Button" parent="Widget"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 28.5
+offset_right = 234.0
+offset_bottom = 58.5
+theme = ExtResource("2_11iqh")
+text = "Pause"
+
+[node name="ProgressBar" type="ProgressBar" parent="Widget"]
+layout_mode = 0
+offset_top = 84.0
+offset_right = 458.0
+offset_bottom = 111.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nxmqe")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xtx6i")
+show_percentage = false
+
+[node name="Label" type="Label" parent="Widget"]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 31.0
+offset_right = 399.0
+offset_bottom = 57.0
+theme = ExtResource("2_11iqh")
+text = "No Audio Selected."
+
+[connection signal="pressed" from="Widget/Replay" to="." method="_on_end_pressed"]
+[connection signal="pressed" from="Widget/Pause" to="." method="_on_pause_pressed"]

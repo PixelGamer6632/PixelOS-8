@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2hiaspa3oe40"]
+[gd_scene load_steps=33 format=3 uid="uid://cg8hbfmxw741t"]
 
 [ext_resource type="Script" path="res://scripts/Browser.gd" id="1_njjpb"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_k134c"]
@@ -6,6 +6,12 @@
 [ext_resource type="Script" path="res://scripts/TabScript.gd" id="3_gi8t7"]
 [ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="3_gxs2f"]
 [ext_resource type="Script" path="res://scripts/PixelosTabScript.gd" id="5_7jfsc"]
+[ext_resource type="FontFile" uid="uid://hybyl02r3uk7" path="res://assets/fonts/ariblk.ttf" id="7_3phy8"]
+[ext_resource type="Theme" uid="uid://bncs06ccqjdkt" path="res://assets/themes/CyncoTheme.tres" id="7_kpnbr"]
+[ext_resource type="Script" path="res://scripts/CyncoTabs.gd" id="8_hqyv4"]
+[ext_resource type="Texture2D" uid="uid://bejbx0wcmthbw" path="res://assets/images/CynPCs.jpg" id="8_mwg01"]
+[ext_resource type="Texture2D" uid="uid://br83katqnrscy" path="res://assets/images/Screenshot_2023-04-02_at_2.15.24_PM.png" id="9_gapjx"]
+[ext_resource type="Script" path="res://scripts/Caltana.gd" id="11_bn0h5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clp3s"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -82,6 +88,26 @@ bg_color = Color(0.156863, 0.380392, 0.501961, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26inh"]
 bg_color = Color(0.0588235, 0.137255, 0.184314, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbvtm"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aeqe2"]
+texture = ExtResource("8_mwg01")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nffk"]
+bg_color = Color(1, 0.466667, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvm01"]
+bg_color = Color(1, 0.466667, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0om4"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5rto"]
+bg_color = Color(0.6, 0.443137, 0.694118, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -118,6 +144,7 @@ offset_left = 1726.0
 offset_top = 9.0
 offset_right = 1764.0
 offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_gxs2f")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xnha6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nj5av")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_45g3p")
@@ -151,10 +178,11 @@ offset_left = 1675.0
 offset_top = 9.0
 offset_right = 1713.0
 offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_gxs2f")
 theme_override_styles/normal = SubResource("StyleBoxFlat_b5ccj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_77qeo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f56ce")
-text = "__"
+text = "_"
 
 [node name="Websites" type="Control" parent="Browser"]
 anchors_preset = 0
@@ -275,19 +303,231 @@ offset_right = 1733.0
 offset_bottom = 973.0
 
 [node name="LineEdit" type="LineEdit" parent="Browser/Websites/1"]
-layout_mode = 0
-offset_left = 568.5
-offset_top = 424.0
-offset_right = 1132.5
-offset_bottom = 496.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -354.5
+offset_top = -24.0
+offset_right = 354.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_k134c")
+placeholder_text = "Search"
 
 [node name="Button" type="Button" parent="Browser/Websites/1"]
 layout_mode = 0
-offset_left = 334.5
-offset_top = 559.0
-offset_right = 476.5
-offset_bottom = 661.0
-text = "pixelos website"
+offset_left = 513.0
+offset_top = 542.0
+offset_right = 614.0
+offset_bottom = 640.0
+theme = ExtResource("2_k134c")
+text = "PixelOS"
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Browser/Websites/1"]
+layout_mode = 0
+offset_left = 732.5
+offset_top = 335.0
+offset_right = 989.5
+offset_bottom = 440.0
+theme = ExtResource("2_k134c")
+theme_override_font_sizes/font_size = 72
+text = "Search"
+
+[node name="CyncoSite" type="Button" parent="Browser/Websites/1"]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 542.0
+offset_right = 740.0
+offset_bottom = 640.0
+theme = ExtResource("2_k134c")
+text = "Cynco"
+icon_alignment = 1
+
+[node name="2" type="Control" parent="Browser/Websites"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1733.0
+offset_bottom = 973.0
+
+[node name="Panel" type="Panel" parent="Browser/Websites/2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bbvtm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Browser/Websites/2/Panel"]
+layout_mode = 0
+offset_left = 717.0
+offset_right = 1735.0
+offset_bottom = 71.0
+alignment = 2
+
+[node name="Tab" type="Button" parent="Browser/Websites/2/Panel/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("7_kpnbr")
+text = "TAB"
+script = ExtResource("8_hqyv4")
+
+[node name="Homepage" type="Control" parent="Browser/Websites/2"]
+anchors_preset = 0
+offset_top = 70.0
+offset_right = 1734.0
+offset_bottom = 978.0
+
+[node name="Panel2" type="Panel" parent="Browser/Websites/2/Homepage"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1733.0
+offset_bottom = 910.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_aeqe2")
+
+[node name="DownloadCyndows" type="Control" parent="Browser/Websites/2"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 70.0
+offset_right = 1734.0
+offset_bottom = 978.0
+
+[node name="Panel" type="Panel" parent="Browser/Websites/2/DownloadCyndows"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1nffk")
+
+[node name="Label" type="Label" parent="Browser/Websites/2/DownloadCyndows"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -293.0
+offset_top = -191.0
+offset_right = 293.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3phy8")
+theme_override_font_sizes/font_size = 55
+text = "Download Cyndows"
+
+[node name="Download" type="Button" parent="Browser/Websites/2/DownloadCyndows"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -29.5
+offset_right = 107.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("7_kpnbr")
+text = "Download"
+
+[node name="Caltana" type="Control" parent="Browser/Websites/2"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 70.0
+offset_right = 1734.0
+offset_bottom = 978.0
+
+[node name="Panel2" type="Panel" parent="Browser/Websites/2/Caltana"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1733.0
+offset_bottom = 910.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvm01")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Browser/Websites/2/Caltana"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 826.0
+offset_right = 1701.0
+offset_bottom = 881.0
+
+[node name="Prompt" type="Button" parent="Browser/Websites/2/Caltana/HBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("7_kpnbr")
+theme_override_font_sizes/font_size = 19
+text = "Question"
+script = ExtResource("11_bn0h5")
+
+[node name="Responses" type="ScrollContainer" parent="Browser/Websites/2/Caltana"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 97.0
+offset_right = 1707.0
+offset_bottom = 784.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Browser/Websites/2/Caltana/Responses"]
+layout_mode = 2
+
+[node name="Response" type="Label" parent="Browser/Websites/2/Caltana/Responses/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3phy8")
+theme_override_font_sizes/font_size = 18
+text = "Caltana Response"
+
+[node name="ClearResponses" type="Button" parent="Browser/Websites/2/Caltana"]
+layout_mode = 0
+offset_left = 173.5
+offset_top = 15.0
+offset_right = 459.5
+offset_bottom = 68.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("7_kpnbr")
+text = "Clear Responses"
+
+[node name="Label" type="Label" parent="Browser/Websites/2/Caltana"]
+layout_mode = 0
+offset_left = 21.5
+offset_top = 780.0
+offset_right = 394.5
+offset_bottom = 814.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3phy8")
+theme_override_font_sizes/font_size = 21
+text = "Government approved questions"
+
+[node name="Panel3" type="Panel" parent="Browser/Websites/2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 71.0
+offset_right = -1572.0
+offset_bottom = 148.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bbvtm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Browser/Websites/2"]
+position = Vector2(79.875, 76.375)
+scale = Vector2(0.103793, 0.100379)
+texture = ExtResource("9_gapjx")
 
 [node name="AddressBar" type="LineEdit" parent="Browser"]
 layout_mode = 0
@@ -325,9 +565,42 @@ offset_bottom = 104.0
 theme = ExtResource("2_k134c")
 text = "Search"
 
+[node name="DownloadProgress" type="ProgressBar" parent="Browser"]
+visible = false
+layout_mode = 0
+offset_left = 1534.0
+offset_top = 61.0
+offset_right = 1757.0
+offset_bottom = 104.0
+theme_override_styles/background = SubResource("StyleBoxFlat_r0om4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i5rto")
+
+[node name="DownloadTimer" type="Timer" parent="Browser/DownloadProgress"]
+
+[node name="DownloadFailed" type="Label" parent="Browser"]
+visible = false
+layout_mode = 0
+offset_left = 1534.5
+offset_top = 72.0
+offset_right = 1758.5
+offset_bottom = 98.0
+theme = ExtResource("2_k134c")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Download Failed"
+
+[node name="Timer" type="Timer" parent="Browser/DownloadFailed"]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="pressed" from="Browser/Toolbar/Browser_X" to="." method="_on_browser_x_pressed"]
 [connection signal="pressed" from="Browser/Toolbar/Browser_M" to="." method="_on_browser_m_pressed"]
 [connection signal="pressed" from="Browser/Websites/1/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Browser/Websites/1/CyncoSite" to="." method="_on_cynco_site_pressed"]
+[connection signal="pressed" from="Browser/Websites/2/DownloadCyndows/Download" to="." method="_on_download_pressed"]
+[connection signal="pressed" from="Browser/Websites/2/Caltana/ClearResponses" to="." method="_on_clear_responses_pressed"]
 [connection signal="pressed" from="Browser/NewTab" to="." method="_on_new_tab_pressed"]
 [connection signal="pressed" from="Browser/CloseTab" to="." method="_on_close_tab_pressed"]
 [connection signal="pressed" from="Browser/NewTab2" to="." method="_on_new_tab_pressed"]
+[connection signal="timeout" from="Browser/DownloadProgress/DownloadTimer" to="." method="_on_download_timer_timeout"]
+[connection signal="visibility_changed" from="Browser/DownloadFailed" to="." method="_on_download_failed_visibility_changed"]
+[connection signal="timeout" from="Browser/DownloadFailed/Timer" to="." method="_on_failed_timer_timeout"]

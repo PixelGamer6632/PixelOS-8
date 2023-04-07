@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://vw6yuw24l65y"]
+[gd_scene load_steps=28 format=3 uid="uid://vw6yuw24l65y"]
 
 [ext_resource type="Script" path="res://scripts/MainControl.gd" id="1_7cvne"]
-[ext_resource type="Texture2D" uid="uid://b4oa21tf85etn" path="res://assets/icons/MyPC.svg" id="2_1l4jf"]
 [ext_resource type="Script" path="res://scripts/DockApp.gd" id="3_j7lxu"]
 [ext_resource type="PackedScene" uid="uid://bw3sl21veke8e" path="res://scenes/applications/Settings.tscn" id="6_yaulf"]
 [ext_resource type="PackedScene" uid="uid://dsyrwd8x53kjw" path="res://scenes/Launcher.tscn" id="7_gaejj"]
@@ -12,10 +11,12 @@
 [ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="11_i7k4n"]
 [ext_resource type="PackedScene" uid="uid://ccxlme13buf0" path="res://scenes/applications/ImageView.tscn" id="12_0xk6o"]
 [ext_resource type="PackedScene" uid="uid://c2g1xkgng1g7h" path="res://scenes/applications/MyPC.tscn" id="12_p2cjl"]
-[ext_resource type="PackedScene" uid="uid://d2hiaspa3oe40" path="res://scenes/applications/Browser.tscn" id="12_pc076"]
+[ext_resource type="PackedScene" uid="uid://cg8hbfmxw741t" path="res://scenes/applications/Browser.tscn" id="12_pc076"]
 [ext_resource type="PackedScene" uid="uid://db0lcawsbaorr" path="res://scenes/applications/VideoPlayer.tscn" id="13_bgcoy"]
+[ext_resource type="Texture2D" uid="uid://mp1i4cy6p5nd" path="res://assets/icons/MyPC.png" id="13_lxr1f"]
 [ext_resource type="PackedScene" uid="uid://b0kqusfjuai0j" path="res://scenes/applications/Calculator.tscn" id="13_nkgtv"]
 [ext_resource type="PackedScene" uid="uid://bx4dnwkv0xrfx" path="res://scenes/applications/ImageLoadError.tscn" id="14_lt8u3"]
+[ext_resource type="PackedScene" uid="uid://b6pcxiapde0f4" path="res://scenes/applications/Widgets.tscn" id="15_ewanx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oek6m"]
 bg_color = Color(0.223529, 0.223529, 0.223529, 1)
@@ -245,7 +246,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -613.0
 offset_top = 2.0
-offset_right = 613.0
+offset_right = 622.0
 offset_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -253,14 +254,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fhxg1")
 
 [node name="Icons" type="HBoxContainer" parent="Dock"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = -1.0
-offset_right = 818.0
-offset_bottom = 117.0
+offset_left = -7.0
+offset_top = -10.0
+offset_right = 808.0
+offset_bottom = 126.0
 
 [node name="myPC" type="Button" parent="Dock/Icons"]
 layout_mode = 2
-icon = ExtResource("2_1l4jf")
+icon = ExtResource("13_lxr1f")
 flat = true
 script = ExtResource("3_j7lxu")
 
@@ -371,6 +372,18 @@ offset_left = 516.0
 offset_top = 488.0
 offset_right = 578.0
 offset_bottom = 550.0
+
+[node name="Widgets" parent="." instance=ExtResource("15_ewanx")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -274.0
+offset_top = 120.0
+offset_right = -274.0
+offset_bottom = 120.0
+grow_horizontal = 0
+grow_vertical = 1
 
 [node name="Launcher" parent="." instance=ExtResource("7_gaejj")]
 visible = false

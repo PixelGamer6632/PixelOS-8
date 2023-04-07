@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1ldb8fhqa5l4"]
+[gd_scene load_steps=6 format=3 uid="uid://b1ldb8fhqa5l4"]
 
 [ext_resource type="Script" path="res://scripts/OOBE.gd" id="1_8b15s"]
 [ext_resource type="Texture2D" uid="uid://clojwtypry74v" path="res://assets/images/Wallpapers/PixelOS8Default.png" id="1_j7pr0"]
-[ext_resource type="Texture2D" uid="uid://b4oa21tf85etn" path="res://assets/icons/MyPC.svg" id="1_tvg66"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_tvg1g"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h0qlt"]
@@ -60,7 +59,6 @@ grow_vertical = 2
 [node name="Logo" type="Sprite2D" parent="Panel/Intro"]
 position = Vector2(266.5, 209)
 scale = Vector2(1.48182, 1.44545)
-texture = ExtResource("1_tvg66")
 
 [node name="Label" type="Label" parent="Panel/Intro/Logo"]
 offset_left = 65.0
@@ -256,6 +254,16 @@ grow_vertical = 0
 theme = ExtResource("2_tvg1g")
 disabled = true
 text = "Next"
+
+[node name="PageNum" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.5
+offset_top = 463.0
+offset_right = 60.5
+offset_bottom = 489.0
+theme = ExtResource("2_tvg1g")
+text = "0/3
+"
 
 [node name="PixelLogo" type="Label" parent="."]
 layout_mode = 1

@@ -3,6 +3,7 @@ extends Control
 @onready var page1 = get_node("/root/Control/Panel/Intro")
 @onready var page2 = get_node("/root/Control/Panel/0")
 @onready var next = $Panel/Next
+@onready var page_num = $Panel/PageNum
 @onready var valid_warning = get_node("/root/Control/Panel/0/ValidWarning")
 @onready var valid_warning_timer = get_node("/root/Control/Panel/0/ValidWarning/Timer")
 @onready var pfp_choose_file = get_node("/root/Control/Panel/0/ChoosePFPFile")
@@ -47,7 +48,7 @@ extends Control
 		},
 		"personalization": {
 			"location": "",
-			"os_logo": "res://assets/icons/MyPC.svg"
+			"os_logo": "res://assets/icons/MyPC.png"
 		}
 	}
 }
@@ -93,7 +94,7 @@ func _on_next_pressed():
 			page3.show()
 			next.disabled = true
 			amount_used = 0
-			amount_setup_to_enable = 4
+			amount_setup_to_enable = 1
 			save(local_data)
 		2:
 			page3.hide()
@@ -104,6 +105,7 @@ func _on_next_pressed():
 			save(local_data)
 			get_tree().change_scene_to_file("res://scenes/Desktop.tscn")
 	page += 1
+	page_num.text = "Page " + str(page) + "/3"
 
 func check_if_met_req():
 	amount_used += 1

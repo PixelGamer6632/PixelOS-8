@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://buo1qu0utsr4l"]
+[gd_scene load_steps=12 format=3 uid="uid://buo1qu0utsr4l"]
 
 [ext_resource type="Script" path="res://scripts/Writer.gd" id="1_ftkby"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_penho"]
+[ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="2_we4bl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vodf8"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -94,6 +95,7 @@ offset_left = 1726.0
 offset_top = 9.0
 offset_right = 1764.0
 offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("2_we4bl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_412w2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e5ccm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_kc3qq")

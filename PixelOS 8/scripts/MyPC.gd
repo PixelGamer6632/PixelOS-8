@@ -15,6 +15,9 @@ extends Control
 @onready var dragger2 = $CreateFile/Toolbar/Dragger2
 @onready var audio_dialog = $CreateFile/AudioChoose
 @onready var audio_button = $CreateFile/ChooseAudio
+@onready var cover_art = $CreateFile/ChooseCover
+@onready var clean_warning = $CleanWarning
+@onready var confirm = $CleanWarning/Confirm
 
 @onready var files = $MyPC/ScrollFiles/Files
 @onready var images = $MyPC/ScrollFilesImages/Files
@@ -43,11 +46,12 @@ extends Control
 @export var selected_file_data = {}
 
 var selected: bool = false
+var has_cover: bool = false
 
 var file_data
 
 var core_folders = ["Home","Downloads","Documents","Pictures","Audio","Videos"]
-var file_types = ["file","wdoc","png","audio","video"]
+var file_types = ["wdoc","png","audio","video"]
 
 var path = "user://save_data.json"
 var open_type = ""
@@ -64,10 +68,12 @@ func load_game():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(load_game())
+	local_data = load_game()
 	if !FileAccess.file_exists(path):
 		save(game.data)
 	
-	local_data = load_game()
+	
 	
 	file_options.text = "File Type"
 	for a in range(len(core_folders)):
@@ -92,6 +98,9 @@ func _ready():
 			loaded_track.id = new_file.id
 			loaded_track.text = str(local_data["files"][c][c]["name"])
 			loaded_track.song_path = local_data["files"][c][c]["audio_path"]
+			loaded_track.name = str(local_data["files"][c][c]["id"])
+			if local_data["files"][c][c].has("audio_cover"):
+				loaded_track.cover_path = local_data["files"][c][c]["audio_cover"]
 			loaded_track.show()
 			print(loaded_track.name)
 			music_player_list.add_child.call_deferred(loaded_track)
@@ -161,6 +170,8 @@ func _on_create_pressed():
 			new_track.name = str(file_data["id"])
 			new_track.text = file_data["name"]
 			new_track.song_path = file_data["audio_path"]
+			if has_cover:
+				new_track.cover_path = file_data["audio_cover"]
 			new_track.show()
 			music_player_list.add_child.call_deferred(new_track)
 	new_file.show()
@@ -172,6 +183,7 @@ func _on_create_pressed():
 	new_file_name.text = ""
 	save(local_data)
 	local_data = load_game()
+	print(local_data["files"])
 	new_file.local_file_data = file_data
 	var all_files = new_file.duplicate()
 	match file_data["file_type"]:
@@ -188,6 +200,7 @@ func _on_create_pressed():
 	file_options.selected = -1
 
 func _on_file_options_item_selected(_index):
+	cover_art.hide()
 	match file_options.get_item_text(file_options.selected):
 		"png":
 			create_file.size = Vector2(288,230)
@@ -196,9 +209,10 @@ func _on_file_options_item_selected(_index):
 			create_button.disabled = true
 		"audio":
 			open_type = "audio"
-			create_file.size = Vector2(288,230)
+			create_file.size = Vector2(288,284)
 			audio_button.show()
 			open_res.show()
+			cover_art.show()
 			create_button.disabled = true
 		"video":
 			open_type = "video"
@@ -212,6 +226,7 @@ func _on_file_options_item_selected(_index):
 			open_res.hide()
 			audio_button.hide()
 			create_button.disabled = false
+			
 	file_data["file_type"] = str(file_options.get_item_text(file_options.selected))
 
 func _on_choose_image_pressed():
@@ -226,7 +241,8 @@ func _on_open_res_pressed():
 
 func _on_file_dialog_file_selected(path):
 	var path_split = str(path).split(".")
-	if path_split[1] == "png":
+	if path_split[-1] == "png":
+		print("true")
 		var image = Image.new()
 		image.load(path)
 		file_data["image"] = str(path)
@@ -253,7 +269,7 @@ func _on_open_file_pressed():
 			video_player.show()
 			var player = get_node("/root/Control/VideoPlayer/VideoPlayer/Video")
 			var video = VideoStreamTheora.new()
-			var file = FileAccess.open(selected_file_data["video"],FileAccess.READ)
+			#var file = FileAccess.open(selected_file_data["video"],FileAccess.READ)
 			#var file_data = file.get_buffer(file.get_length())
 			video.set_file(selected_file_data["video"])
 			player.stream = video
@@ -276,9 +292,34 @@ func _on_audio_choose_file_selected(path):
 				file_data["audio_path"] = str(path)
 				create_button.disabled = false
 		"video":
-			if path_split[1] == "ogv":
+			if path_split[-1] == "ogv":
 				file_data["video"] = str(path)
 				create_button.disabled = false
+		"cover":
+			if path_split[-1] == "png":
+				file_data["audio_cover"] = str(path)
+				has_cover = true
 
 func _on_my_pc_m_pressed():
 	self.hide()
+
+func _on_choose_cover_pressed():
+	audio_dialog.show()
+	open_type = "cover"
+
+func _on_cancel_pressed():
+	clean_warning.hide()
+
+func _on_clean_files_pressed():
+	clean_warning.show()
+
+func _on_confirm_pressed():
+	for a in range(len(local_data["files"])):
+		if local_data["files"][a][a].has("audio_path"):
+			var song_path = "/root/Control/MusicPlayer/MusicPlayer/ScrollMusic/MusicList/" + str(local_data["files"][a][a]["id"])
+			get_node(song_path).queue_free()
+	
+	local_data["files"] = []
+	local_data["num_of_files"] = 0
+	clean_warning.hide()
+	save(local_data)

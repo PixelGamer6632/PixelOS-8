@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccxlme13buf0"]
+[gd_scene load_steps=12 format=3 uid="uid://ccxlme13buf0"]
 
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_4yudu"]
 [ext_resource type="Script" path="res://scripts/ImageView.gd" id="1_avqjn"]
+[ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="3_3pjlb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_251qq"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 1)
@@ -117,6 +118,7 @@ offset_left = 1166.0
 offset_top = 8.0
 offset_right = 1204.0
 offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("3_3pjlb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_m6iji")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ghs88")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_i5gri")
@@ -128,10 +130,11 @@ offset_left = 1116.0
 offset_top = 8.0
 offset_right = 1154.0
 offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("3_3pjlb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yi2f5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xtxit")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sa5ej")
-text = "__"
+text = "_"
 
 [node name="Infobar" type="Panel" parent="Display"]
 layout_mode = 0

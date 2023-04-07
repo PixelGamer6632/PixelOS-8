@@ -1,8 +1,12 @@
 extends Button
 
 @onready var display = get_node("/root/Control/Calculator/Calculator/NumDisplay/Label")
+@onready var button = get_node("/root/Control/Calculator/Calculator/")
+@onready var calc = get_node("/root/Control/Calculator")
 
 var symbol = self.text
+var column_pos: int = 0
+var max_on_column: int = 3
 
 # Called when the node is pressed.
 func _pressed():

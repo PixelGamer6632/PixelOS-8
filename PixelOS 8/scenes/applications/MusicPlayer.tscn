@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cvwoeibjw6o4d"]
+[gd_scene load_steps=19 format=3 uid="uid://cvwoeibjw6o4d"]
 
 [ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="1_81x2m"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="1_uywlq"]
 [ext_resource type="Script" path="res://scripts/Song.gd" id="3_cm1gg"]
+[ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="3_n3f65"]
+[ext_resource type="Texture2D" uid="uid://cykbxcvv1r1re" path="res://assets/images/Screenshot 2022-04-15 221151.png" id="5_3nw1l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lffgt"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -18,6 +20,9 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="FontVariation" id="FontVariation_56rvg"]
+base_font = ExtResource("3_n3f65")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_118op"]
 bg_color = Color(0.6, 0.0313726, 0, 1)
@@ -73,6 +78,9 @@ bg_color = Color(0.133333, 0.133333, 0.133333, 1)
 bg_color = Color(0.6, 0.443137, 0.694118, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ssheo"]
+texture = ExtResource("5_3nw1l")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -134,6 +142,7 @@ offset_left = 1031.0
 offset_top = 8.0
 offset_right = 1069.0
 offset_bottom = 46.0
+theme_override_fonts/font = SubResource("FontVariation_56rvg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_118op")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fxg17")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x66ql")
@@ -145,10 +154,11 @@ offset_left = 981.0
 offset_top = 8.0
 offset_right = 1019.0
 offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("3_n3f65")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2rbev")
 theme_override_styles/hover = SubResource("StyleBoxFlat_te72m")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8nu4o")
-text = "__"
+text = "_"
 
 [node name="Player" type="Panel" parent="MusicPlayer"]
 layout_mode = 1
@@ -190,6 +200,7 @@ offset_right = 575.0
 offset_bottom = 97.0
 focus_mode = 0
 theme = ExtResource("1_uywlq")
+disabled = true
 text = "Play"
 
 [node name="Replay" type="Button" parent="MusicPlayer/Player"]
@@ -200,14 +211,6 @@ offset_right = 482.0
 offset_bottom = 87.0
 theme = ExtResource("1_uywlq")
 text = "Replay"
-
-[node name="CoverDisplay" type="Panel" parent="MusicPlayer/Player"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = -196.0
-offset_right = 186.0
-offset_bottom = -26.0
 
 [node name="AudioName" type="Label" parent="MusicPlayer/Player"]
 layout_mode = 0
@@ -239,11 +242,20 @@ text = "Autoplay"
 flat = true
 alignment = 1
 
+[node name="FullscreenCover" type="Button" parent="MusicPlayer/Player"]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 43.0
+offset_right = 371.0
+offset_bottom = 87.0
+theme = ExtResource("1_uywlq")
+text = "\\/"
+
 [node name="ScrollMusic" type="ScrollContainer" parent="MusicPlayer"]
 layout_mode = 0
-offset_left = 19.0
+offset_left = 568.0
 offset_top = 67.0
-offset_right = 1055.0
+offset_right = 1061.0
 offset_bottom = 547.0
 
 [node name="MusicList" type="VBoxContainer" parent="MusicPlayer/ScrollMusic"]
@@ -260,6 +272,14 @@ text = "Music"
 alignment = 0
 script = ExtResource("3_cm1gg")
 
+[node name="CoverDisplay" type="Panel" parent="MusicPlayer"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 105.0
+offset_right = 485.0
+offset_bottom = 514.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ssheo")
+
 [connection signal="pressed" from="MusicPlayer/Toolbar/Music_X" to="." method="_on_music_x_pressed"]
 [connection signal="pressed" from="MusicPlayer/Toolbar/Music_M" to="." method="_on_music_m_pressed"]
 [connection signal="timeout" from="MusicPlayer/Player/ProgressBar/ValueIncrease" to="." method="_on_value_increase_timeout"]
@@ -268,3 +288,4 @@ script = ExtResource("3_cm1gg")
 [connection signal="pressed" from="MusicPlayer/Player/Replay" to="." method="_on_end_pressed"]
 [connection signal="pressed" from="MusicPlayer/Player/Pause" to="." method="_on_pause_pressed"]
 [connection signal="toggled" from="MusicPlayer/Player/Autoplay" to="." method="_on_autoplay_toggled"]
+[connection signal="pressed" from="MusicPlayer/Player/FullscreenCover" to="." method="_on_fullscreen_cover_pressed"]

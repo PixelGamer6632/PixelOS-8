@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0kqusfjuai0j"]
+[gd_scene load_steps=13 format=3 uid="uid://b0kqusfjuai0j"]
 
 [ext_resource type="Script" path="res://scripts/Calculator.gd" id="1_5inug"]
+[ext_resource type="FontFile" uid="uid://ch73fhxmnt3qt" path="res://assets/fonts/Poppins-SemiBold.ttf" id="2_63ubr"]
 [ext_resource type="Theme" uid="uid://cyrgleki50jp0" path="res://assets/themes/MainTheme.tres" id="2_mj144"]
 [ext_resource type="Script" path="res://scripts/CalcButton.gd" id="3_k73yq"]
 
@@ -97,6 +98,7 @@ offset_left = 334.0
 offset_top = 8.0
 offset_right = 372.0
 offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_63ubr")
 theme_override_styles/normal = SubResource("StyleBoxFlat_euywn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_111uy")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0y5qi")
@@ -132,10 +134,11 @@ offset_left = 284.0
 offset_top = 8.0
 offset_right = 322.0
 offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_63ubr")
 theme_override_styles/normal = SubResource("StyleBoxFlat_61rkn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lgit3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_53cyx")
-text = "__"
+text = "_"
 
 [node name="3" type="HBoxContainer" parent="Calculator"]
 layout_mode = 0
