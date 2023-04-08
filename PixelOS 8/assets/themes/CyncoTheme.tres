@@ -13,6 +13,10 @@ bg_color = Color(0.294118, 0.294118, 0.294118, 1)
 
 [resource]
 Button/colors/font_color = Color(1, 0.533333, 0, 1)
+Button/colors/font_hover_color = Color(1, 0.533333, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0.533333, 0, 1)
+Button/colors/font_pressed_color = Color(1, 0.533333, 0, 1)
+Button/colors/icon_focus_color = Color(1, 0.533333, 0, 1)
 Button/font_sizes/font_size = 26
 Button/fonts/font = ExtResource("1_illtm")
 Button/styles/hover = SubResource("StyleBoxFlat_28dcy")

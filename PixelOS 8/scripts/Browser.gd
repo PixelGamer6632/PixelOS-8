@@ -1,7 +1,7 @@
 extends Control
 
-@onready var tab = get_node("/root/Control/Browser/Browser/Toolbar/Tabs/Tab")
-@onready var tab_container = get_node("/root/Control/Browser/Browser/Toolbar/Tabs")
+@onready var tab = get_node("/root/Control/Browser/Browser/Toolbar/Tabs/Tabs/Tab")
+@onready var tab_container = get_node("/root/Control/Browser/Browser/Toolbar/Tabs/Tabs")
 
 @onready var dragger = $Browser/Toolbar/Dragger
 @onready var download_progress = $Browser/DownloadProgress
@@ -78,7 +78,7 @@ func load_site(site_name):
 		var path = "/root/Control/Browser/Browser/Websites/" + str(a)
 		get_node(path).hide()
 	var site_path = "/root/Control/Browser/Browser/Websites/" + str(site_name)
-	var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/" + str(browser_data[selected_tab]["tab_id"])
+	var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/Tabs/" + str(browser_data[selected_tab]["tab_id"])
 	get_node(site_path).show()
 	get_node(tab_path).text = str(site_names[site_name])
 	browser_data[selected_tab]["site_id"] = site_name
@@ -121,7 +121,7 @@ func _process(_delta): # Called every frame.
 		selected = false
 
 func close_browser():
-	var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/"
+	var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/Tabs/"
 	for a in range(len(browser_data)):
 		get_node(tab_path + str(a)).queue_free()
 	for b in range(3):
@@ -138,9 +138,9 @@ func close_browser():
 	cynco_button.disabled = false
 	clear_caltana_replies()
 	create_tab()
-	if get_node("/root/Control/Browser/Browser/Toolbar/Tabs").has_node("0"):
-		get_node("/root/Control/Browser/Browser/Toolbar/Tabs/0").name = "t0"
-		print(get_node("/root/Control/Browser/Browser/Toolbar/Tabs/" + str(browser_data[selected_tab]["tab_id"])))
+	if get_node("/root/Control/Browser/Browser/Toolbar/Tabs/Tabs").has_node("0"):
+		get_node("/root/Control/Browser/Browser/Toolbar/Tabs/Tabs/0").name = "t0"
+		print(get_node("/root/Control/Browser/Browser/Toolbar/Tabs/Tabs/" + str(browser_data[selected_tab]["tab_id"])))
 		print("ok")
 	self.hide()
 
@@ -155,7 +155,7 @@ func _on_button_pressed():
 
 func _on_close_tab_pressed():
 	if open_tabs != 1:
-		var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/"
+		var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/Tabs/"
 		var site_path = "/root/Control/Browser/Browser/Websites/"
 		get_node(site_path + str(browser_data[selected_tab]["site_id"])).hide()
 		get_node(tab_path + str(browser_data[selected_tab]["tab_id"])).hide()

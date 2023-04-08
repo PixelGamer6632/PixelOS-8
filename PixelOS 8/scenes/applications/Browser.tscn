@@ -150,21 +150,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nj5av")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_45g3p")
 text = "X"
 
-[node name="Tabs" type="HBoxContainer" parent="Browser/Toolbar"]
-layout_mode = 0
-offset_left = 54.0
-offset_top = 7.0
-offset_right = 1664.0
-offset_bottom = 47.0
-
-[node name="Tab" type="Button" parent="Browser/Toolbar/Tabs"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_k134c")
-text = "Tab"
-script = ExtResource("3_gi8t7")
-
 [node name="Dragger" type="Button" parent="Browser/Toolbar"]
 layout_mode = 0
 offset_right = 51.0
@@ -183,6 +168,26 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_b5ccj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_77qeo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f56ce")
 text = "_"
+
+[node name="Tabs" type="ScrollContainer" parent="Browser/Toolbar"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 7.0
+offset_right = 1662.0
+offset_bottom = 48.0
+
+[node name="Tabs" type="HBoxContainer" parent="Browser/Toolbar/Tabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tab" type="Button" parent="Browser/Toolbar/Tabs/Tabs"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_k134c")
+text = "Tab"
+script = ExtResource("3_gi8t7")
 
 [node name="Websites" type="Control" parent="Browser"]
 anchors_preset = 0
@@ -374,6 +379,7 @@ alignment = 2
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 mouse_default_cursor_shape = 2
 theme = ExtResource("7_kpnbr")
 text = "TAB"
@@ -469,6 +475,7 @@ offset_bottom = 881.0
 [node name="Prompt" type="Button" parent="Browser/Websites/2/Caltana/HBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
 theme = ExtResource("7_kpnbr")
 theme_override_font_sizes/font_size = 19

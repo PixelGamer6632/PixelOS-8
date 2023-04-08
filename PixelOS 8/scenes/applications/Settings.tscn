@@ -418,7 +418,7 @@ offset_right = 137.0
 offset_bottom = 166.0
 theme = ExtResource("1_vnhs5")
 theme_override_font_sizes/font_size = 22
-text = "Version: 1.1.1"
+text = "Version: 1.1.2"
 
 [node name="Apply" type="Button" parent="Settings"]
 layout_mode = 1

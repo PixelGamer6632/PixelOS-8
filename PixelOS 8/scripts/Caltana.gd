@@ -20,7 +20,8 @@ var responses = {
 		"They made me, of course I like them. Who are you? a rebel?",
 		"I was trained to always say yes... and then dump a bunch of Cynco propaganda. Anyways, CYNCO GOD CYNCO GOD CYNCO SEES ALL THEY STOPPED THE CAYLSCUM FROM STOMPING ON US!!!! Wait do you even know who Cynco is?",
 		"I love Cynco, Cynco is best, I am a Cynco chatbot, I am a Cynco chatbot.",
-		"Yes, I love Cynco, but as your using an OS that we DIDNT make, you probably don't know what Cynco is, and I'm too lazy to explain it to you."
+		"Yes, I love Cynco, but as your using an OS that we DIDNT make, you probably don't know what Cynco is, and I'm too lazy to explain it to you.",
+		"OF COURSE I AM YOU MINEBLOXIAN $#^#&^$!!!!!"
 	],
 	2: [
 		"LOOK AT THE TOP RIGHT OF YOUR SCREEN!!",
@@ -37,7 +38,8 @@ var responses = {
 		"You dont even have a CynPC. I can read your specs is this even the right universe?",
 		"If you do, your device will explode. Well, if your even using a Cynco device that is.",
 		"ok",
-		"Best I can do is $999999999 for a new screen."
+		"Best I can do is $999999999 for a new screen.",
+		"Why would you even ask that? Just buy a new one? Isn't that how it works nowadays?"
 	],
 	4: [
 		"Open the window, there, now you are getting cool air.",
@@ -45,7 +47,8 @@ var responses = {
 		"I am not your shopping assistant.",
 		"Why do I need to answer this question?",
 		"Try buying one, maybe that could help.",
-		"Buy one."
+		"Buy one.",
+		"Have you tried buying one?"
 	]
 }
 

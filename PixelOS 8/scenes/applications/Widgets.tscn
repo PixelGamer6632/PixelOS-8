@@ -96,6 +96,7 @@ offset_right = 399.0
 offset_bottom = 57.0
 theme = ExtResource("2_11iqh")
 text = "No Audio Selected."
+clip_text = true
 
 [connection signal="pressed" from="Widget/Replay" to="." method="_on_end_pressed"]
 [connection signal="pressed" from="Widget/Pause" to="." method="_on_pause_pressed"]

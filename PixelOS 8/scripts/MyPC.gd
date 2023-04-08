@@ -18,6 +18,7 @@ extends Control
 @onready var cover_art = $CreateFile/ChooseCover
 @onready var clean_warning = $CleanWarning
 @onready var confirm = $CleanWarning/Confirm
+@onready var image_preview = $MyPC/FileInfo/ImagePreview
 
 @onready var files = $MyPC/ScrollFiles/Files
 @onready var images = $MyPC/ScrollFilesImages/Files
@@ -327,5 +328,6 @@ func _on_delet_file_pressed():
 	var selected_id = selected_file_data["id"]
 	var file_path = "/root/Control/MyPC/MyPC/ScrollFiles/Files/" + str(selected_id)
 	local_data["files"][selected_id][selected_id]["deleted"] = true
+	image_preview.hide()
 	get_node(file_path).hide()
 	save(local_data)

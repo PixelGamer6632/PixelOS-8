@@ -14,6 +14,7 @@ extends Button
 @onready var widget_play = get_node("/root/Control/Widgets/Widget/Play")
 @onready var widget_label = get_node("/root/Control/Widgets/Widget/Label")
 @onready var pause = get_node("/root/Control/MusicPlayer/MusicPlayer/Player/Pause")
+@onready var title = get_node("/root/Control/MusicPlayer/MusicPlayer/Toolbar/Title")
 
 @export var id = 0
 @export var local_data = {}
@@ -44,6 +45,7 @@ func _pressed():
 		hours = 0
 		audio_name.text = self.text
 		widget_label.text = self.text
+		title.text = self.text + " - Music Player"
 		track_progress.value = 0
 		widget_progress.value = 0
 		track_time.stop()

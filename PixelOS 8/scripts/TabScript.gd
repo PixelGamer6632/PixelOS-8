@@ -17,7 +17,7 @@ func _pressed():
 	var path = "/root/Control/Browser/Browser/Websites/" + str(browser.browser_data[id]["site_id"])
 	get_node(path).show()
 	for b in range(len(browser.browser_data)):
-		var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/"
+		var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/Tabs/"
 		get_node(tab_path + str(b)).disabled = false
 	self.disabled = true
 	pixelos_site.disabled = false
