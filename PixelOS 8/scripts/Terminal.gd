@@ -54,19 +54,19 @@ var mouse_offset = get_global_mouse_position()
 func _process(_delta):
 	if selected:
 		self.position = get_global_mouse_position() + mouse_offset
-	if dragger.button_pressed == true:
+	if dragger.button_pressed:
 		mouse_offset = position - get_global_mouse_position()
 		selected = true
 	else:
 		selected = false
 	
 	# Commands
-	if Input.is_action_just_pressed("execute_command") and open == true:
+	if Input.is_action_just_pressed("execute_command") and open:
 		local_data = load_game()
 		if commands[2] in command_line.text: # help
 			command_line.text += str(commands)
 		elif commands[3] in command_line.text: # pixelos
-			command_line.text += "\n" + text_logo + "\n" + str(local_data["settings"]["system"]["os_name"]) + ". " + str(local_data["settings"]["system"]["kernel_name"]) + " Kernal version 1.1.0. \n(C) " + str(local_data["settings"]["system"]["manufacturer"]) + "\n" + str(local_data["settings"]["system"]["ram"]) + "GB RAM."
+			command_line.text += "\n" + text_logo + "\n" + str(local_data["settings"]["system"]["os_name"]) + ". " + str(local_data["settings"]["system"]["kernel_name"]) + " Kernal version 1.1.1. \n(C) " + str(local_data["settings"]["system"]["manufacturer"]) + "\n" + str(local_data["settings"]["system"]["ram"]) + "GB RAM."
 		elif commands[3] in command_line.text: # quit
 			self.hide()
 			command_line.text = ""
@@ -99,7 +99,7 @@ func _on_terminal_x_pressed():
 	command_line.text = ""
 
 func _on_visibility_changed():
-	if self.visible == true:
+	if self.visible:
 		open = true
 	else:
 		open = false

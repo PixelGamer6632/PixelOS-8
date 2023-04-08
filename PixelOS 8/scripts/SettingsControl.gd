@@ -6,6 +6,8 @@ extends Control
 @onready var pfp_launcher = get_node("/root/Control/Launcher/PFP")
 @onready var menu_user_display = get_node("/root/Control/Menu/Name")
 @onready var launcher_name = get_node("/root/Control/Launcher/Name")
+@onready var power_source_input = get_node("/root/Control/Settings/Settings/WorldBuilding/PowerSource")
+@onready var currency_input = get_node("/root/Control/Settings/Settings/WorldBuilding/Currency")
 @onready var username_display = $Settings/Username
 @onready var section = $Settings/Categories/Section
 @onready var categories = $Settings/Categories
@@ -72,9 +74,9 @@ func load_game():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(wallpaper)
 	local_data = load_game()
 	
+	# Applies the saved text to their proper labels and LineEdit nodes.
 	logo_label.text = str(local_data["settings"]["system"]["os_name"])
 	ram.value = int(local_data["settings"]["system"]["ram"])
 	power_source_input.text = local_data["settings"]["world_building"]["power_source"]
@@ -104,7 +106,7 @@ func _on_my_pc_x_pressed():
 	about_tab.hide()
 	person_tab.hide()
 	system_tab.show()
-	for a in range(len(sections)):
+	for a in range(len(sections)): # Deselects all settings categories and selects the system category.
 		var section_path = "/root/Control/Settings/Settings/Categories/" + str(a)
 		if get_node(section_path).text != "System":
 			get_node(section_path).disabled = false
@@ -134,9 +136,10 @@ func _on_confirm_pressed():
 			local_data["date_time"]["year"] = int(change_year.value)
 	save(local_data)
 	change_input.text = ""
-	username_display.text = local_data["username"]
-	menu_user_display.text = local_data["username"]
-	launcher_name.text = local_data["username"]
+	username_display.text = str(change_input.text)
+	menu_user_display.text = str(change_input.text)
+	launcher_name.text = str(change_input.text)
+	change_menu.hide()
 
 func _on_change_pass_pressed():
 	change_menu.show()
@@ -146,13 +149,12 @@ func _on_change_pass_pressed():
 	change_date.hide()
 	change_input.placeholder_text = "Enter New Password"
 
-func _on_wallpaper_select_item_selected(_index):
+func _on_wallpaper_select_item_selected(_index): # Sets wallpaper to a selected default wallpaper.,.
 	var stylebox = StyleBoxTexture.new()
 	var image = str(wallpapers[wallpaper_select.selected]["path"])
 	var image2 = load(image)
 	stylebox.texture = image2
 	wallpaper.add_theme_stylebox_override("panel",stylebox)
-	#wallpaper.texture = 
 	local_data["wallpaper"] = wallpapers[wallpaper_select.selected]["path"]
 	save(local_data)
 
@@ -191,11 +193,6 @@ func _physics_process(_delta):
 
 func _on_choose_wallpaper_file_selected(path):
 	var split_path = str(path).split(".")
-	#var wallpaper_tex = StyleBoxTexture.new()
-	#var image = Image.load_from_file(path)
-	#var texture = ImageTexture.create_from_image(image)
-	#wallpaper_tex.texture = texture
-	#wallpaper.add_theme_stylebox_override("panel",wallpaper_tex)
 	if split_path[1] == "png":
 		set_image(path,wallpaper)
 		local_data["wallpaper"] = str(path)
@@ -250,8 +247,7 @@ func _on_file_dialog_file_selected(path):
 				set_image(path,os_logo)
 				save(local_data)
 
-@onready var power_source_input = get_node("/root/Control/Settings/Settings/WorldBuilding/PowerSource")
-@onready var currency_input = get_node("/root/Control/Settings/Settings/WorldBuilding/Currency")
+# Applies all settings to the local_data dictionary.
 func _on_apply_pressed():
 	local_data = load_game()
 	local_data["settings"]["world_building"]["currency"] = str(currency.text)
@@ -273,4 +269,3 @@ func _on_change_date_pressed():
 	change_menu_title.text = "Change Date"
 	change_input.hide()
 	change_date.show()
-	

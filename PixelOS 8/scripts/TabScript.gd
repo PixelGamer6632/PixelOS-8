@@ -1,6 +1,8 @@
 extends Button
 
 @onready var browser = get_node("/root/Control/Browser")
+@onready var cynco_site = get_node("/root/Control/Browser/Browser/Websites/1/CyncoSite")
+@onready var pixelos_site = get_node("/root/Control/Browser/Browser/Websites/1/Button")
 
 @export var id: int = 0
 
@@ -18,3 +20,5 @@ func _pressed():
 		var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/"
 		get_node(tab_path + str(b)).disabled = false
 	self.disabled = true
+	pixelos_site.disabled = false
+	cynco_site.disabled = false

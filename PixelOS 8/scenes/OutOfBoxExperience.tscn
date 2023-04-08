@@ -262,7 +262,7 @@ offset_top = 463.0
 offset_right = 60.5
 offset_bottom = 489.0
 theme = ExtResource("2_tvg1g")
-text = "0/3
+text = "Page 0/3
 "
 
 [node name="PixelLogo" type="Label" parent="."]

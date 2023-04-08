@@ -68,12 +68,7 @@ func load_game():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(load_game())
 	local_data = load_game()
-	if !FileAccess.file_exists(path):
-		save(game.data)
-	
-	
 	
 	file_options.text = "File Type"
 	for a in range(len(core_folders)):
@@ -87,36 +82,41 @@ func _ready():
 	for b in range(len(file_types)):
 		file_options.get_popup().add_item(file_types[b])
 	for c in range(len(local_data["files"])):
-		var new_file = mypc_file.duplicate()
-		new_file.text = local_data["files"][c][c]["name"] + "." + local_data["files"][c][c]["file_type"]
-		new_file.name = str(local_data["files"][c][c]["id"])
-		new_file.id = local_data["files"][c][c]["id"]
-		new_file.local_file_data = local_data["files"][c][c]
-		new_file.show()
-		if local_data["files"][c][c].has("audio_path"):
-			var loaded_track = music_player_track.duplicate()
-			loaded_track.id = new_file.id
-			loaded_track.text = str(local_data["files"][c][c]["name"])
-			loaded_track.song_path = local_data["files"][c][c]["audio_path"]
-			loaded_track.name = str(local_data["files"][c][c]["id"])
-			if local_data["files"][c][c].has("audio_cover"):
-				loaded_track.cover_path = local_data["files"][c][c]["audio_cover"]
-			loaded_track.show()
-			print(loaded_track.name)
-			music_player_list.add_child.call_deferred(loaded_track)
-			
-		var all_files = new_file.duplicate()
-		match local_data["files"][c][c]["file_type"]:
-			"wdoc":
-				documents.add_child.call_deferred(new_file)
-			"png":
-				images.add_child.call_deferred(new_file)
-			"audio":
-				audio.add_child.call_deferred(new_file)
-			"video":
-				videos.add_child.call_deferred(new_file)
-		files.add_child.call_deferred(new_file)
-		files.add_child.call_deferred(all_files)
+		if !local_data["files"][c][c].has("deleted"):
+			local_data["files"][c][c]["deleted"] = false
+			save(local_data)
+		
+		if !local_data["files"][c][c]["deleted"]:
+			var new_file = mypc_file.duplicate()
+			new_file.text = local_data["files"][c][c]["name"] + "." + local_data["files"][c][c]["file_type"]
+			new_file.name = str(local_data["files"][c][c]["id"])
+			new_file.id = local_data["files"][c][c]["id"]
+			new_file.local_file_data = local_data["files"][c][c]
+			new_file.show()
+			if local_data["files"][c][c].has("audio_path"):
+				var loaded_track = music_player_track.duplicate()
+				loaded_track.id = new_file.id
+				loaded_track.text = str(local_data["files"][c][c]["name"])
+				loaded_track.song_path = local_data["files"][c][c]["audio_path"]
+				loaded_track.name = str(local_data["files"][c][c]["id"])
+				if local_data["files"][c][c].has("audio_cover"):
+					loaded_track.cover_path = local_data["files"][c][c]["audio_cover"]
+				loaded_track.show()
+				print(loaded_track.name)
+				music_player_list.add_child.call_deferred(loaded_track)
+				
+			var all_files = new_file.duplicate()
+			match local_data["files"][c][c]["file_type"]:
+				"wdoc":
+					documents.add_child.call_deferred(new_file)
+				"png":
+					images.add_child.call_deferred(new_file)
+				"audio":
+					audio.add_child.call_deferred(new_file)
+				"video":
+					videos.add_child.call_deferred(new_file)
+			files.add_child.call_deferred(new_file)
+			files.add_child.call_deferred(all_files)
 
 # This _process() function is how you can drag the window.
 var mouse_offset = get_global_mouse_position()
@@ -134,7 +134,8 @@ func _on_create_file_pressed():
 	file_data = {
 		"name": "File",
 		"file_type": "",
-		"id": 0
+		"id": 0,
+		"deleted": false
 	}
 
 func _on_my_pc_x_pressed():
@@ -148,9 +149,9 @@ func close_create():
 	add_image.hide()
 	open_res.hide()
 	audio_button.hide()
+	create_file.hide()
 	create_button.disabled = false
 	new_file_name.text = ""
-	create_file.hide()
 
 func _on_file_x_pressed():
 	close_create()
@@ -160,17 +161,17 @@ func _on_create_pressed():
 	file_data["id"] = local_data["num_of_files"]
 	file_data["name"] = str(new_file_name.text)
 	match file_options.get_item_text(file_options.selected):
-		"wdoc":
+		"wdoc": # Adds document dictionary keys if it's a wdoc file.
 			file_data["text"] = ""
 			file_data["text_name"] = file_data["name"]
 			file_data["char_count"] = 0
 			file_data["word_count"] = 0
-		"audio":
+		"audio": # Adds a track to Music Player with the audio data stored onto it.
 			var new_track = music_player_track.duplicate()
 			new_track.name = str(file_data["id"])
 			new_track.text = file_data["name"]
 			new_track.song_path = file_data["audio_path"]
-			if has_cover:
+			if has_cover: # If a cover image was selected, add it to the file's dataset.
 				new_track.cover_path = file_data["audio_cover"]
 			new_track.show()
 			music_player_list.add_child.call_deferred(new_track)
@@ -186,6 +187,8 @@ func _on_create_pressed():
 	print(local_data["files"])
 	new_file.local_file_data = file_data
 	var all_files = new_file.duplicate()
+	
+	# Adds the file into its respective folder.
 	match file_data["file_type"]:
 		"wdoc":
 			documents.add_child.call_deferred(all_files)
@@ -247,7 +250,7 @@ func _on_file_dialog_file_selected(path):
 		image.load(path)
 		file_data["image"] = str(path)
 		create_button.disabled = false
-	elif path_split[1] == "ogv":
+	elif path_split[-1] == "ogv":
 		pass
 
 func _on_open_file_pressed():
@@ -259,8 +262,6 @@ func _on_open_file_pressed():
 			writer_name.text = selected_file_data["text_name"] + " - Pixel Writer"
 			writer_char.text = "Characters - " + str(selected_file_data["char_count"])
 			writer_word.text = "Words - " + str(selected_file_data["word_count"])
-			print("e")
-			print(selected_file_data)
 		"png":
 			image_view.show()
 		"audio":
@@ -269,11 +270,8 @@ func _on_open_file_pressed():
 			video_player.show()
 			var player = get_node("/root/Control/VideoPlayer/VideoPlayer/Video")
 			var video = VideoStreamTheora.new()
-			#var file = FileAccess.open(selected_file_data["video"],FileAccess.READ)
-			#var file_data = file.get_buffer(file.get_length())
 			video.set_file(selected_file_data["video"])
 			player.stream = video
-			#video_player_track.max_value = player.stream.get_length()
 
 func _on_choose_audio_pressed():
 	audio_dialog.show()
@@ -313,6 +311,7 @@ func _on_cancel_pressed():
 func _on_clean_files_pressed():
 	clean_warning.show()
 
+# Removes all files if confirmed.
 func _on_confirm_pressed():
 	for a in range(len(local_data["files"])):
 		if local_data["files"][a][a].has("audio_path"):
@@ -322,4 +321,11 @@ func _on_confirm_pressed():
 	local_data["files"] = []
 	local_data["num_of_files"] = 0
 	clean_warning.hide()
+	save(local_data)
+
+func _on_delet_file_pressed():
+	var selected_id = selected_file_data["id"]
+	var file_path = "/root/Control/MyPC/MyPC/ScrollFiles/Files/" + str(selected_id)
+	local_data["files"][selected_id][selected_id]["deleted"] = true
+	get_node(file_path).hide()
 	save(local_data)

@@ -25,7 +25,7 @@ extends Control
 
 var num_of_tabs: int = 0
 var open_site: int = 0
-
+var open_tabs: int = 0
 
 var selected: bool = false
 
@@ -34,6 +34,7 @@ var browser_data = []
 var site_names = ["PixelOS - Official Site","Home","Cynco - Building Your Tomarow"]
 
 var cynco_tabs = ["CYN-PC","THINK-TV","CYN-PHONE","CYN-PAD","CYNDOWS","CALTANA"]
+
 @export var caltana_prompts = [
 	"What's the weather?",
 	"Do you love Cynco?",
@@ -66,6 +67,7 @@ func create_tab():
 		"tab_id": num_of_tabs
 	})
 	num_of_tabs += 1
+	open_tabs += 1
 	print("done lol")
 
 func load_site(site_name):
@@ -118,7 +120,7 @@ func _process(_delta): # Called every frame.
 	else:
 		selected = false
 
-func _on_browser_x_pressed():
+func close_browser():
 	var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/"
 	for a in range(len(browser_data)):
 		get_node(tab_path + str(a)).queue_free()
@@ -131,6 +133,7 @@ func _on_browser_x_pressed():
 	browser_data = []
 	num_of_tabs = 0
 	selected_tab = 0
+	open_tabs = 1
 	pixelos_button.disabled = false 
 	cynco_button.disabled = false
 	clear_caltana_replies()
@@ -140,7 +143,9 @@ func _on_browser_x_pressed():
 		print(get_node("/root/Control/Browser/Browser/Toolbar/Tabs/" + str(browser_data[selected_tab]["tab_id"])))
 		print("ok")
 	self.hide()
-	print(browser_data)
+
+func _on_browser_x_pressed():
+	close_browser()
 
 func _on_new_tab_pressed():
 	create_tab()
@@ -149,14 +154,19 @@ func _on_button_pressed():
 	load_site(0)
 
 func _on_close_tab_pressed():
-	var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/"
-	var site_path = "/root/Control/Browser/Browser/Websites/"
-	get_node(site_path + str(browser_data[selected_tab]["site_id"])).hide()
-	get_node(tab_path + str(browser_data[selected_tab]["tab_id"])).hide()
-	for a in range(3):
-		var path = "/root/Control/Browser/Browser/Websites/" + str(a)
-		get_node(path).hide()
-	get_node("/root/Control/Browser/Browser/Websites/1").show()
+	if open_tabs != 1:
+		var tab_path = "/root/Control/Browser/Browser/Toolbar/Tabs/"
+		var site_path = "/root/Control/Browser/Browser/Websites/"
+		get_node(site_path + str(browser_data[selected_tab]["site_id"])).hide()
+		get_node(tab_path + str(browser_data[selected_tab]["tab_id"])).hide()
+		for a in range(3):
+			var path = "/root/Control/Browser/Browser/Websites/" + str(a)
+			get_node(path).hide()
+		get_node("/root/Control/Browser/Browser/Websites/1").show()
+		open_tabs -= 1
+	else:
+		close_browser()
+	print(open_tabs)
 	print(browser_data)
 
 func _on_browser_m_pressed():

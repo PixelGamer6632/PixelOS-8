@@ -54,7 +54,6 @@ func _on_play_pressed():
 var song_path = "/root/Control/MusicPlayer/MusicPlayer/MusicList/"
 func _on_value_increase_timeout():
 	var song_string = ""
-#	var song = get_node(song_path + str(song_id))
 	track_progress.value += 1
 	widget_progress.value += 1
 	song_pos_secconds += 1
@@ -159,7 +158,7 @@ func _on_pause_pressed():
 func _on_autoplay_toggled(button_pressed):
 	autoplay = button_pressed
 
-func _on_fullscreen_cover_pressed():
+func _on_fullscreen_cover_pressed(): # Expands / shrinks the album cover.
 	fullscreen = !fullscreen
 	if fullscreen == false:
 		cover_display.size = Vector2(409,409)
